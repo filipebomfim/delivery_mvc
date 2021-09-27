@@ -76,17 +76,13 @@
                     $log->setRegistro($registro);
                 }
 
-                header('Location: '.INCLUDE_PATH.'item/visualizarItens');
+                header('Location: '.INCLUDE_PATH_PAINEL.'item/visualizarItens');
                 exit;
             }else{
-                header('Location: '.INCLUDE_PATH.'painel');
+                header('Location: '.INCLUDE_PATH_PAINEL.'painel');
                 exit;
             }
          
-        }
-
-        public function log($registro){
-
         }
 
         public function checkInsert(){
@@ -123,10 +119,10 @@
                             $log->setRegistro($registro);
                         }
                     }
-                    header('Location: '.INCLUDE_PATH.'item/visualizarItens');
+                    header('Location: '.INCLUDE_PATH_PAINEL.'item/visualizarItens');
                     exit;
                 }else{
-                    header('Location: '.INCLUDE_PATH.'painel');
+                    header('Location: '.INCLUDE_PATH_PAINEL.'painel');
                     exit;
                 }
 
@@ -170,7 +166,7 @@
                     }
                 }
                 
-                header('Location: '.INCLUDE_PATH.'item/editarItem/'.$item->getId());
+                header('Location: '.INCLUDE_PATH_PAINEL.'item/editarItem/'.$item->getId());
                 exit;
         }
     }

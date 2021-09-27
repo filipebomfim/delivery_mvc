@@ -27,14 +27,14 @@
         <div class="col-md-2   text-center ">
             <div class="filtro">
                 <div class="btn-group-vertical d-none d-sm-block">
-                        <a href="<?php echo INCLUDE_PATH ?>item/visualizarItens">
+                        <a href="<?php echo INCLUDE_PATH_PAINEL ?>item/visualizarItens">
                             <button type="button" class="btn btn-outline-primary">Todos</button>
                         </a>
 
                         <?php 
                             foreach ($this->dados['categorias'] as $key => $value) {
                         ?>
-                            <a href="<?php echo INCLUDE_PATH ?>item/visualizarItens/<?php echo $value['cat_id'] ?>">
+                            <a href="<?php echo INCLUDE_PATH_PAINEL ?>item/visualizarItens/<?php echo $value['cat_id'] ?>">
                                 <button type="button" class="btn btn-outline-primary"><?php echo $value['cat_nome'] ?></button>
                             </a>
                         <?php
@@ -43,14 +43,14 @@
                 </div>
 
                 <div class="btn-group-vertical d-block d-sm-none ">
-                        <a href="<?php echo INCLUDE_PATH ?>item/visualizarItens">
+                        <a href="<?php echo INCLUDE_PATH_PAINEL ?>item/visualizarItens">
                             <button type="button" class="btn btn-outline-primary">Todos</button>
                         </a>
 
                         <?php 
                             foreach ($this->dados['categorias'] as $key => $value) {
                         ?>
-                            <a href="<?php echo INCLUDE_PATH ?>item/visualizarItens/<?php echo $value['cat_id'] ?>">
+                            <a href="<?php echo INCLUDE_PATH_PAINEL ?>item/visualizarItens/<?php echo $value['cat_id'] ?>">
                                 <button type="button" class="btn btn-outline-primary"><?php echo $value['cat_nome'] ?></button>
                             </a>
                         <?php
@@ -99,7 +99,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-footer">
-                                <form method="post" action="<?php echo INCLUDE_PATH;?>item/editarItem/<?php echo $value['item_id'] ?>">
+                                <form method="post" action="<?php echo INCLUDE_PATH_PAINEL;?>item/editarItem/<?php echo $value['item_id'] ?>">
                                     <button type="submit" name="editar" class="btn btn-primary">Sim, editar</button>
                                 </form>
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>                             
@@ -117,7 +117,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-footer">
-                                <form method="post" action="<?php echo INCLUDE_PATH;?>item/remove">
+                                <form method="post" action="<?php echo INCLUDE_PATH_PAINEL;?>item/remove">
                                     <input type="hidden" name="nome" value="<?php echo $value['item_nome'] ?>">
                                     <input type="hidden" name="estoque" value="<?php echo $value['item_estoque'] ?>">
                                     <input type="hidden" name="preco" value="<?php echo $value['item_preco'] ?>">

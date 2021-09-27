@@ -32,7 +32,7 @@
                 <ul class="list-unstyled components mb-5">
                     
                     <li>
-                        <a href="<?php echo INCLUDE_PATH ?>painel" class="align-middle">
+                        <a href="<?php echo INCLUDE_PATH_PAINEL?>" class="align-middle">
                             <i class='bx bx-home-alt'></i> 
                             <span class="ms-1 .d-block  d-sm-inline primary">Home</span>
                         </a>
@@ -46,13 +46,13 @@
                         </a>
                         <ul class="collapse list-unstyled" id="itensSubmenu">
                             <li>
-                                <a href="<?php echo INCLUDE_PATH?>painel/item/visualizarItens">
+                                <a href="<?php echo INCLUDE_PATH_PAINEL?>item/visualizarItens">
                                     <i class='bx bx-show'></i>
                                     <span class=".d-block d-sm-inline">Visualizar</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo INCLUDE_PATH?>item/cadastrarItem">
+                                <a href="<?php echo INCLUDE_PATH_PAINEL?>item/cadastrarItem">
                                     <i class='bx bx-plus-circle'></i>
                                     <span class=".d-block  d-sm-inline">Cadastrar</span>
                                 </a>
@@ -87,7 +87,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo INCLUDE_PATH ?>log/visualizarLog" class="align-middle">
+                        <a href="<?php echo INCLUDE_PATH_PAINEL ?>log/visualizarLog" class="align-middle">
                             <i class='bx bx-notepad'></i>
                             <span class="ms-1 .d-block  d-sm-inline primary">Registros</span>
                         </a>

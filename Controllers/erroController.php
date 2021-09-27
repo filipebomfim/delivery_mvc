@@ -2,7 +2,8 @@
 
     class erroController extends Controller{
         public function index(){
-            $this->carregarTemplate('404');
+            $dados = array();
+            $this->carregarTemplate('painel/404',$dados,'painel/templates/header','painel/templates/footer');
         }
     }
 ?>

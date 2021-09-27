@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'IBM Plex Sans Thai Looped', sans-serif !important;
+}
+
+html,body{
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100%;
+    background: rgb(226, 217, 217);
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+
+.cover{
+    height: 100vh;    
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden; 
+    text-align: center;
+    padding-left: 0 !important;
+}
+
+.bg-transp{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.75;
+    overflow: hidden;
+}
+
+.selecao a{
+    text-decoration: none;
+}
+
+.selecao span{
+    position: relative;
+    top: 40%;
+    color: white;
+    font-size: 56px;
+    font-weight: 100;
+}
+
+.cover:hover .bg-transp{
+    opacity: 0.95;
+    transition: width 2s, height 2s, transform 2s;
+    color: yellow;
+}

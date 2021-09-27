@@ -20,5 +20,7 @@
     define('VENDA',4);
 
     define('INCLUDE_PATH','http://192.168.100.7/portfolio/sistema_estoque/');
+    define('INCLUDE_PATH_PAINEL','http://192.168.100.7/portfolio/sistema_estoque/painel/');
+    define('INCLUDE_PATH_SITE','http://192.168.100.7/portfolio/sistema_estoque/site/');
     define('BASE_DIR',__DIR__.'/');
 ?>

@@ -23,7 +23,7 @@
 ?>
 
 <div class="conteudo">
-    <form method="post" action="<?php echo INCLUDE_PATH.'item/checkUpdate' ?>" enctype="multipart/form-data" class="container-fluid">
+    <form method="post" action="<?php echo INCLUDE_PATH_PAINEL.'item/checkUpdate' ?>" enctype="multipart/form-data" class="container-fluid">
         <div class="row">
             <div class="mb-3 col-8">
                 <label for="item" class="form-label">Nome</label>
