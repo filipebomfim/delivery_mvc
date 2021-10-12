@@ -93,6 +93,13 @@
                         </a>
                     </li>
             </div>
+
+            <div class="d-flex justify-content-center">
+                <button type="button" id="sidebarMobileCollapse" class="btn btn-primary text-center">
+                    <i class='bx bx-menu-alt-right'></i>
+                <span class="sr-only">Toggle Menu</span>
+                </button>
+            </div>
         </nav>
 
         <!-- Conteúdo  -->

@@ -1,4 +1,4 @@
-<div class="conteudo titulo">
+<div class="conteudo titulo animate__animated animate__fadeInUp">
     <i class='bx bx-show'></i>
     <span>Cadastrar Item</span>
 </div>
@@ -23,14 +23,14 @@
 
 
 
-<div class="conteudo">
+<div class="conteudo animate__animated animate__fadeInUp">
     <form method="post" action="<?php echo INCLUDE_PATH_PAINEL;?>item/checkInsert" enctype="multipart/form-data" class="container-fluid">
         <div class="row">
-            <div class="mb-3 col-8">
+            <div class="mb-3 col-md-8">
                 <label for="item" class="form-label">Nome</label>
                 <input name = "nome" type="text" class="form-control" id="item" aria-describedby="item">
             </div>   
-            <div class="mb-3 col-4">
+            <div class="mb-3 col-md-4">
                 <label for="item" class="form-label">Categoria</label>
                 <select name = "categoria" class="form-select" id="categoria" aria-label="Default select example">
                     <option selected value="selecione">Selecione</option>
@@ -48,7 +48,7 @@
             <textarea name = "descricao" class="form-control" id="descricao" rows="3"></textarea>
         </div>
 
-        <div class="mb-3 col-3">
+        <div class="mb-3 col-md-3 col-6">
             <label for="estoque" class="form-label">Estoque</label>
             <div class="input-group">
                 <div class="input-group-text">+</div>
@@ -56,7 +56,7 @@
             </div>
         </div>
 
-        <div class="mb-3 col-3">
+        <div class="mb-3 col-md-3 col-6">
             <label for="preco" class="form-label">Preço</label>
             <div class="input-group">
                 <div class="input-group-text">R$</div>
@@ -64,7 +64,7 @@
             </div>
         </div>
             
-        <div class="mb-3 col-6">
+        <div class="mb-3 col-md-6">
             <label for="">Imagem</label>
             <input name = "imagem" class="form-control" type="file" id="formFile">
         </div>

@@ -67,6 +67,11 @@ nav{
     margin-left: -250px; 
 }
 
+#sidebarMobileCollapse{
+    font-size: 24px;
+    display: none;
+}
+
 .titulo{
     background: #212529 !important ;
     color: white !important; 
@@ -93,7 +98,14 @@ nav{
     padding: 20px;
     padding-top: 20px;
     box-shadow: 0 0 1em 0 #b7b9b9;
+    animation-delay: 0.2s;
+    width: 100% !important;
 }
+
+.modal-backdrop {
+    z-index: -1;
+  }
+
 
 .dbox-wrapper{
     margin-bottom: 10px !important;
@@ -150,10 +162,12 @@ nav{
     color: #FFF;
     font-weight: 600;
 }
+
 .dbox__title {
     font-size: 14px;
     color: #FFF;
     color: rgba(255, 255, 255, 0.81);
+    width: 100% !important;
 }
 
 .dbox-text{
@@ -312,9 +326,14 @@ table td{
     font-weight: 800;
 }
 
+.home-stats{
+    animation-delay: 0.4s;
+}
+
 .home-stats table{
     margin-top: 15px !important;
 }
+
 
 
 @media screen and (max-width: 990px){
@@ -329,7 +348,6 @@ table td{
 
     #sidebar {
         width: 300px;
-        border-right: 1px solid rgb(224, 221, 221);
     }
     
     #sidebar.active {
@@ -339,6 +357,19 @@ table td{
 }
 
 @media screen and (max-width: 768px){
+
+    #sidebar {
+        border-right: 1px solid rgb(224, 221, 221);
+    }
+    
+    #sidebar.active {
+        min-width: 100% !important;
+    }
+
+    #sidebarMobileCollapse{
+        display: block;
+    }
+    
     .filtro a button{
         margin: 1px;
         border-bottom: 1px solid #212529;
@@ -346,30 +377,14 @@ table td{
         border-radius: 10px;
     }
 
-    .filtro-log{
-        flex-direction: row !important;
-    }
-
-    .filtro-log a button{
-        width: 80px !important;
-        padding: 5px 0px !important;
-        margin: 0 !important;
-        border-radius: 0;
-        border-right: 0;
-        text-align: center !important;
-    }
-
-    .filtro-log a:first-child button{
+    .filtro a:first-child button{
         border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-        border-top-right-radius: 0px;
+        border-top-right-radius: 10px;
     }
     
-    .filtro-log a:last-child button{
-        border-bottom-left-radius: 0px;
-        border-top-right-radius: 10px;
+    .filtro a:last-child button{
+        border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
-        border-right: 1px solid black;
     }
 
     

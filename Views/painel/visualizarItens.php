@@ -22,9 +22,9 @@
 ?>
 
 
-<div class="conteudo ">
+<div class="conteudo animate__animated animate__fadeInUp">
     <div class="row">
-        <div class="col-md-2   text-center ">
+        <div class="col-md-2 text-center ">
             <div class="filtro">
                 <div class="btn-group-vertical d-none d-sm-block">
                         <a href="<?php echo INCLUDE_PATH_PAINEL ?>item/visualizarItens">
@@ -63,15 +63,15 @@
         <div class="col-md-8 col-lg-9 mx-auto">
             <div class="row listar-itens">
                 <?php 
-                    $animation = 0.2;
+                    $animation = 0.4;
                     foreach ($this->dados['itens'] as $key => $value) {
                     $formatPreco = $value['item_preco'];
                     $formatPreco = number_format($formatPreco,2,',','.');
                 ?>
 
                 <!-- Modal para Informação -->
-                <div class="modal fade info" id="modalInfo<?php echo $value['item_id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
+                <div class="modal fade info"  id="modalInfo<?php echo $value['item_id'] ?>">
+                    <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel"><?php echo $value['item_nome'] ?></h5>
@@ -91,8 +91,8 @@
                 </div><!-- info -->            
 
                 <!-- Modal para alterar -->
-                <div class="modal fade alterar" id="modalAlterar<?php echo $value['item_id'] ?>" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
+                <div class="modal fade alterar" id="modalAlterar<?php echo $value['item_id'] ?>">
+                    <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Deseja editar o item <?php echo $value['item_nome'] ?>?</h5>
@@ -109,8 +109,8 @@
                 </div><!-- alterar -->
 
                 <!-- Modal para excluir -->
-                <div class="modal fade delete" id="modalDelete<?php echo $value['item_id'] ?>" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
+                <div class="modal fade delete" id="modalDelete<?php echo $value['item_id'] ?>">
+                    <div class="modal-dialog ">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Deseja excluir o item <?php echo $value['item_nome'] ?>?</h5>
@@ -141,14 +141,14 @@
                             <div class=" d-flex justify-content-center align-items-center">
                                 <div class="btn-group">
                                 <a class="nav-link active" aria-current="page" href="#">
-                                    <i class='bx bxs-info-circle bx-tada-hover' data-bs-toggle="modal" data-bs-target="#modalInfo<?php echo $value['item_id'] ?>"></i>
+                                    <i class='modal-button bx bxs-info-circle bx-tada-hover' data-bs-toggle="modal" data-bs-target="#modalInfo<?php echo $value['item_id'] ?>"></i>
                                 </a>
 
                                 <a class="nav-link active" aria-current="page" href="#">
-                                    <i class='bx bx-edit bx-tada-hover'  data-bs-toggle="modal" data-bs-target="#modalAlterar<?php echo $value['item_id'] ?>"></i>
+                                    <i class='modal-button bx bx-edit bx-tada-hover'  data-bs-toggle="modal" data-bs-target="#modalAlterar<?php echo $value['item_id'] ?>"></i>
                                 </a>
                                 <a class="nav-link active" aria-current="page" href="#">
-                                    <i class='bx bxs-trash bx-tada-hover'  data-bs-toggle="modal" data-bs-target="#modalDelete<?php echo $value['item_id'] ?>"></i>
+                                    <i class='modal-button bx bxs-trash bx-tada-hover'  data-bs-toggle="modal" data-bs-target="#modalDelete<?php echo $value['item_id'] ?>"></i>
                                 </a>
                                 </div>
                             </div>
