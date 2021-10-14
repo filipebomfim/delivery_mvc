@@ -1,7 +1,7 @@
 <?php
     class itemController extends Controller{
         public function index(){
-            $this->carregarTemplate('visualizarItens');
+            $this->visualizarItens();
         }
 
         public function visualizarItens($filtro = 0){
