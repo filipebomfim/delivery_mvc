@@ -10,10 +10,12 @@
 
         public function addToCart($item_id){
             $item = new Item();
-            $dados = $item->getItem($item_id);
+            $item->setId($item_id);
+            $dados = $item->getItem();
             if($dados['item_estoque']){
                 $carrinho = new Carrinho();
-                $carrinho->addToCart($dados);              
+                $carrinho->setItens($dados);
+                $carrinho->addToCart();              
                 $_SESSION['status'] = 'sucesso';
                 $_SESSION['status_msg'] = 'Item adicionado ao carrinho';
             }else{
@@ -26,12 +28,20 @@
 
         public function calcCart(){
             $carrinho = new Carrinho();
-            return $carrinho->calcCart($this->dados);
+            $carrinho->setItens($this->dados);
+            return $carrinho->calcCart();
         }
 
         public static function CountItensCart(){
             $carrinho = new Carrinho();
-            return $carrinho->countItensCart($_SESSION['carrinho']);
+            $carrinho->setItens($_SESSION['carrinho']);
+            return $carrinho->countItensCart();
+        }
+
+        public function limparCarrinho(){
+            unset($_SESSION['carrinho']);
+            header('Location: '.INCLUDE_PATH_SITE.'carrinho');
+            exit;
         }
     }
 

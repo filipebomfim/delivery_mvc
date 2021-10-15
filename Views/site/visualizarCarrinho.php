@@ -4,7 +4,49 @@
             <p>Carrinho</p>            
         </div>
 
-        <table class="table">
+        <?php 
+            if(!isset($_SESSION['carrinho'])){
+                echo '<div class="alert alert-light" role="alert">
+                            <i class="bx bx-check pe-2"></i>
+                            Seu carrinho está vazio!
+                        </div>';
+
+                if(!empty($_SESSION['status'])){
+                    if($_SESSION['status'] == 'sucesso') {
+                        echo '<div class="alert alert-success" role="alert">
+                                <i class="bx bx-check pe-2"></i>'
+                                .$_SESSION['status_msg'].
+                            '</div>';
+                    }else if($_SESSION['status'] == 'erro'){
+                        echo '<div class="alert alert-danger" role="alert">
+                                <i class="bx bx-error-circle pe-2"></i>'
+                                .$_SESSION['status_msg'].
+                            '</div>';
+                    }
+
+                unset($_SESSION['status']);
+                }
+                
+
+            }else{
+                if(!empty($_SESSION['status'])){
+                    if($_SESSION['status'] == 'sucesso') {
+                        echo '<div class="alert alert-success" role="alert">
+                                <i class="bx bx-check pe-2"></i>'
+                                .$_SESSION['status_msg'].
+                            '</div>';
+                    }else if($_SESSION['status'] == 'erro'){
+                        echo '<div class="alert alert-danger" role="alert">
+                                <i class="bx bx-error-circle pe-2"></i>'
+                                .$_SESSION['status_msg'].
+                            '</div>';
+                    }
+
+                unset($_SESSION['status']);
+            }
+        ?>
+
+        <table class="table mb-5">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -44,5 +86,15 @@
                 </tr>
             </tfoot>
         </table>
-    </div>
+
+        <div class="mb-3 mt-3 d-flex justify-content-center">
+            <a href="<?php echo INCLUDE_PATH_SITE?>carrinho/limparCarrinho">
+                <button type="button" class="btn btn-warning me-3">Limpar Carrinho</button>
+            </a>
+            <a href="<?php echo INCLUDE_PATH_SITE?>pedido/addPedido">
+                <button type="button" class="btn btn-success">Finalizar Pedido</button>
+            </a>
+        </div>
+        <?php  } ?>
+    </div><!-- container -->
 </section>

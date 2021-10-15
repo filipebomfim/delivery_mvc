@@ -147,7 +147,7 @@
             }                
         }
 
-        public function getItem($item_id){
+        public function getItem(){
             $dados = array();
             $sql = $this->conexao->prepare(
                 "SELECT i.item_id,
@@ -163,7 +163,7 @@
                  ON i.item_categoria = c.cat_id 
                  WHERE i.item_id = ?               
             ");
-            $sql->execute(array(intval($item_id)));
+            $sql->execute(array(intval($this->getID())));
             $dados = $sql->fetch(PDO::FETCH_ASSOC);
             return $dados;
         }
@@ -241,6 +241,17 @@
         public function getCategoriaNome($categoria){
             $cat = new Categoria();
             return $cat->getCategoriaItem($categoria);
+        }
+
+        public function removerEstoque($quantidade){
+                $sql = $this->conexao->prepare(
+                    "UPDATE tb_item
+                    SET item_estoque = item_estoque - ?
+                    WHERE item_id = ?;"
+                );
+
+                $sql->execute(array($quantidade,$this->id));
+                return; 
         }
 
     }
