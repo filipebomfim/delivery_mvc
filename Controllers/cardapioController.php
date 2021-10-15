@@ -13,7 +13,7 @@
             $item = new Item();
             if($filtro == 0) $dados['itens'] = $item->getItens();
             else $dados['itens'] = $item->filtrarCategoria($filtro);
-            $this->carregarTemplate('site/cardapio',$dados,'site/templates/header','site/templates/footer');
+            $this->carregarTemplate('site/visualizarCardapio',$dados,'site/templates/header','site/templates/footer');
         }
     }
 ?>

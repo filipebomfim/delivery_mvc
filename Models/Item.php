@@ -188,6 +188,28 @@
             return $dados;
         }
 
+        public function getItensCarrinho($itens){
+            $dados = array();
+            foreach ($itens as $key => $value) {
+                $sql = $this->conexao->prepare(
+                    "SELECT i.item_id,
+                            i.item_nome,
+                            i.item_preco,
+                            i.item_imagem,
+                            i.item_descricao,
+                            i.item_estoque,
+                            c.cat_nome
+                     FROM tb_item i
+                     INNER JOIN tb_categoria c
+                     ON i.item_categoria = c.cat_id 
+                     WHERE c.cat_id = ?               
+                ");
+                $sql->execute(array($value['item_id']));
+                array_push($dados,$sql->fetchall(PDO::FETCH_ASSOC));
+            }
+            return $dados;
+        }
+
         public function filtrarCategoria($filtro){
             $dados = array();
             $sql = $this->conexao->prepare(
@@ -220,6 +242,7 @@
             $cat = new Categoria();
             return $cat->getCategoriaItem($categoria);
         }
+
     }
 
 ?>

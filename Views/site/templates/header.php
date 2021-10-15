@@ -20,11 +20,14 @@
             <div class="container">
                 <nav class="row">
                     <div class="col-md-2 d-flex justify-content-center">
-                        <a href="" class="nav-link nav-item align-middle">
+                        <a href="<?php echo INCLUDE_PATH_SITE ?>carrinho" class="nav-link nav-item align-middle">
                             <button type="button" class="d-flex justify-content-center carrinho btn btn-primary position-relative">
                                 <i class='bx bxs-cart'></i>
                                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                    0
+                                    <?php 
+                                        if(isset($_SESSION['carrinho'])) echo carrinhoController::CountItensCart();
+                                        else echo '0';
+                                    ?>
                                     <span class="visually-hidden">unread messages</span>
                                 </span>
                             </button>

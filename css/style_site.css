@@ -269,6 +269,15 @@ section{
     filter: grayscale(1);
 }
 
+.carrinho table{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.carrinho table tfoot th{
+    font-size: 32px;
+}
+
 
 @media screen and (max-width: 768px){
 

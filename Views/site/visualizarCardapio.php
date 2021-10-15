@@ -1,9 +1,29 @@
 <section class="cardapio">
     <div class="container">
-        <div class="titulo mb-5 p-1">
+        <div class="titulo mb-3 p-1">
             <p>Cardápio</p>            
         </div>
-        <div class="row">
+
+        <?php 
+            if(!empty($_SESSION['status'])){
+                if($_SESSION['status'] == 'sucesso') {
+                    echo '<div class="alert alert-success" role="alert">
+                            <i class="bx bx-check pe-2"></i>'
+                            .$_SESSION['status_msg'].
+                        '</div>';
+                }else if($_SESSION['status'] == 'erro'){
+                    echo '<div class="alert alert-danger" role="alert">
+                            <i class="bx bx-error-circle pe-2"></i>'
+                            .$_SESSION['status_msg'].
+                        '</div>';
+                }
+
+                unset($_SESSION['status']);
+                //unset($_SESSION['carrinho']);
+            }
+        ?>
+
+        <div class="row mt-5">
             <div class="col-md-2 text-center ">
                 <div class="filtro">
                     <div class="btn-group-vertical d-none d-sm-block">
@@ -89,7 +109,9 @@
                             
                         </div>
                         <div class=" mb-3 d-flex justify-content-center align-items-center">
-                            <button class="btn btn-outline">Adicionar ao carrinho</button>
+                            <a href="<?php echo INCLUDE_PATH_SITE?>carrinho/addToCart/<?php echo $value['item_id'] ?>">
+                                <button class="btn btn-outline">Adicionar ao carrinho</button>
+                            </a>                            
                         </div>
                     </div>
                 </div>
