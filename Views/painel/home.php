@@ -10,7 +10,7 @@
                     <div class="dbox__body">
                         <div class="row">
                             <div class="dbox-text col-md-8 col-6">
-                                <span class="dbox__count">40.000</span>
+                                <span class="dbox__count">R$ <?php echo number_format($this->calcLucroTotal(),2,',','.') ?></span>
                                 <hr>
                             </div><!-- dbox-text -->     
                             <div class="dbox-icon col-md-4 col-6">
@@ -44,13 +44,13 @@
                     <div class="dbox__body">
                         <div class="row">
                             <div class="dbox-text col-md-8 col-6">
-                                <span class="dbox__count">40</span>
+                                <span class="dbox__count"><?php echo $this->getVendasHoje() ?></span>
                                 <hr>
                             </div><!-- dbox-text -->     
                             <div class="dbox-icon col-md-4 col-6">
                                 <i class='bx bxs-caret-up-circle'></i>
                             </div><!-- dbox-icon -->   
-                            <span class="dbox__title ">Vendas em 24 horas</span>                          
+                            <span class="dbox__title ">Vendas Hoje</span>                          
                         </div><!-- row -->                            
                     </div>			
                 </div><!-- dbox -->

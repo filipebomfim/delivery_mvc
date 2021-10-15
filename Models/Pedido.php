@@ -58,5 +58,40 @@
                 return false;
             }
         }
+
+        public function getPedidos(){
+                $dados = array();
+                $sql = $this->conexao->prepare(
+                    "SELECT * FROM tb_item i 
+                    INNER JOIN tb_pedido_itens pi 
+                    ON i.item_id = pi.pi_item_id
+                    INNER JOIN tb_pedido p
+                    ON p.pedido_id = pi.pi_pedido_id
+                    INNER JOIN tb_categoria c
+                    ON c.cat_id = i.item_categoria              
+                ");
+                $sql->execute();
+                $dados = $sql->fetchall(PDO::FETCH_ASSOC);
+                return $dados;
+        }
+
+        public function calcLucroTotal($pedidos){
+            $lucro = 0;
+            foreach ($pedidos as $key => $value) {
+                $lucro = ($value['pi_quantidade'] * $value['item_preco']) + $lucro;
+            }
+            return $lucro;
+        }
+
+        public function getPedidosPorDia($data){
+            $dados = array();
+            $sql = $this->conexao->prepare(
+                "SELECT * FROM `tb_pedido` where DATE(pedido_horario) = DATE(?)"
+            );
+
+            $sql->execute(array($data));
+            $dados = $sql->fetchall(PDO::FETCH_ASSOC);
+            return $dados;
+        }
     }
 ?>
