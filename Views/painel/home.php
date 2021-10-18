@@ -10,13 +10,13 @@
                     <div class="dbox__body">
                         <div class="row">
                             <div class="dbox-text col-md-8 col-6">
-                                <span class="dbox__count">R$ <?php echo number_format($this->calcLucroTotal(),2,',','.') ?></span>
+                                <span class="dbox__count">R$ <?php echo number_format($this->dados['lucro'],2,',','.') ?></span>
                                 <hr>
                             </div><!-- dbox-text -->     
                             <div class="dbox-icon col-md-4 col-6">
                                 <i class='bx bxs-dollar-circle'></i>
                             </div><!-- dbox-icon -->                           
-                            <span class="dbox__title ">Lucro com vendas</span>
+                            <span class="dbox__title ">Lucro do dia</span>
                         </div><!-- row -->
                     </div>			
                 </div><!-- dbox -->
@@ -32,7 +32,7 @@
                             <div class="dbox-icon col-md-4 col-6">
                                 <i class='bx bxs-food-menu'></i>
                             </div><!-- dbox-icon --> 
-                            <span class="dbox__title ">Total de Itens</span>                          
+                            <span class="dbox__title ">Itens Cadastrados</span>                          
                             
                         </div><!-- row -->
                     </div>			
@@ -44,13 +44,13 @@
                     <div class="dbox__body">
                         <div class="row">
                             <div class="dbox-text col-md-8 col-6">
-                                <span class="dbox__count"><?php echo $this->getVendasHoje() ?></span>
+                                <span class="dbox__count"><?php echo count($this->dados['vendas']) ?></span>
                                 <hr>
                             </div><!-- dbox-text -->     
                             <div class="dbox-icon col-md-4 col-6">
                                 <i class='bx bxs-caret-up-circle'></i>
                             </div><!-- dbox-icon -->   
-                            <span class="dbox__title ">Vendas Hoje</span>                          
+                            <span class="dbox__title ">Vendas do dia</span>                          
                         </div><!-- row -->                            
                     </div>			
                 </div><!-- dbox -->
@@ -103,18 +103,27 @@
             <table class="table table-sm">
                 <thead class=" table-dark">
                     <tr >
-                        <th scope="col">Login</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Cargo</th>
+                        <th scope="col">Número do Pedido</th>
+                        <th scope="col">Horário</th>
+                        <th scope="col">Preço</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    <?php
+                            foreach ($this->dados['vendas'] as $key => $value) {
+                        ?>
+                        <tr>
+
+                            <td><?php echo $value['pedido_id'] ?></td>
+                            <td><?php echo date('d/m/Y H:i:s',strtotime($value['pedido_horario'])) ?></td>
+                            <td>R$ <?php echo number_format($value['pedido_precototal'],2,',','.') ?></td>
+
+                        </tr>
+                        <?php 
+                        if($key == 4) break;
+                            }
+                    ?>
 
                 </tbody>
             </table>

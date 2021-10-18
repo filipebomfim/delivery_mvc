@@ -116,9 +116,9 @@
             <div class="loggout ">
               <ul class="nav navbar-nav">
                 <li class="nav-item d-flex">
-                    <a href="#" class="nav-link nav-item align-middle">
+                    <a href="<?php echo INCLUDE_PATH ?>" class="nav-link nav-item align-middle">
                         <i class='bx bx-log-out'></i>
-                        <span class="ms-1 .d-block  d-sm-inline primary">Configurações</span>
+                        <span class="ms-1 .d-block  d-sm-inline primary">Sair</span>
                     </a>
                 </li>
               </ul>

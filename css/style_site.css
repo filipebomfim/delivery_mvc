@@ -174,7 +174,7 @@ section{
     color: white;
     border-radius: 50px;
     text-align: center;
-    background-image: url('../img/bg.jpg');
+    background-image: url('../img/bg-titulo.jpg');
     background-position: center;
 	background-size: cover;
     background-repeat: no-repeat;
@@ -184,6 +184,7 @@ section{
 .titulo p{
     z-index: 999 !important;
     opacity: 1;
+    text-shadow: 0.1em 0.1em 0.2em black
 }
 
 .titulo .bg-transp{
@@ -199,7 +200,7 @@ section{
 
 
 .filtro a button{
-    width: 150px !important;
+    width: 160px !important;
     border-radius: 0;
     border-bottom: 0;
     color: #212529;
@@ -245,14 +246,18 @@ section{
 
 .item .card-price{
     font-size: 18px;
-    background-color: red;
+    background-color: green;
     color: white;
-    width: 30% !important;
     position: absolute;
     top: 10px;
     left: 0;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
+    display: block !important;
+}
+
+.item .sem-estoque{
+    background-color: red;
 }
 
 .item button{

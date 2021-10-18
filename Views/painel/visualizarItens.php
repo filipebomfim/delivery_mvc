@@ -1,6 +1,6 @@
 <div class="conteudo titulo animate__animated animate__fadeInUp">
     <i class='bx bx-show'></i>
-    <span>Itens Cadastrados</span>
+    <span><?php echo $this->dados['titulo'] ?> </span>
 </div>
 
 <?php 
@@ -62,104 +62,69 @@
         
         <div class="col-md-8 col-lg-9 mx-auto">
             <div class="row listar-itens">
-                <?php 
+                <?php if(empty($this->dados['itens'])){
+                    echo '<div class="d-flex justify-content-center align-items-center" role="alert">
+                        <i class="bx bx-x pe-1"></i>
+                        Nenhum Item cadastrado!
+                    </div>';
+                }else{
+                     
                     $animation = 0.4;
                     foreach ($this->dados['itens'] as $key => $value) {
-                    $formatPreco = $value['item_preco'];
-                    $formatPreco = number_format($formatPreco,2,',','.');
                 ?>
 
-                <!-- Modal para Informação -->
-                <div class="modal fade info"  id="modalInfo<?php echo $value['item_id'] ?>">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel"><?php echo $value['item_nome'] ?></h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <?php echo $value['item_descricao'] ?>
-                            </div>
-                            <div class="modal-body">
-                                <?php echo $value['item_estoque'] ?> no estoque.
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fechar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- info -->            
+                <!-- Para itens com estoque -->
+                <?php if($value['item_estoque']>0){ ?>
 
-                <!-- Modal para alterar -->
-                <div class="modal fade alterar" id="modalAlterar<?php echo $value['item_id'] ?>">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Deseja editar o item <?php echo $value['item_nome'] ?>?</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-footer">
-                                <form method="post" action="<?php echo INCLUDE_PATH_PAINEL;?>item/editarItem/<?php echo $value['item_id'] ?>">
-                                    <button type="submit" name="editar" class="btn btn-primary">Sim, editar</button>
-                                </form>
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>                             
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- alterar -->
+                    <div class="col-6 col-md-6 col-lg-6 col-xl-4" >
+                        <div class="item card shadow-sm animate__animated animate__fadeInUp"
+                            style="animation-delay: <?php echo $animation?>s;"> 
+                            <div  style="background-image: url(<?php echo INCLUDE_PATH?>img/<?php echo $value['item_imagem'] ?>);" class="card-img"></div>
 
-                <!-- Modal para excluir -->
-                <div class="modal fade delete" id="modalDelete<?php echo $value['item_id'] ?>">
-                    <div class="modal-dialog ">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Deseja excluir o item <?php echo $value['item_nome'] ?>?</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-footer">
-                                <form method="post" action="<?php echo INCLUDE_PATH_PAINEL;?>item/remove">
-                                    <input type="hidden" name="nome" value="<?php echo $value['item_nome'] ?>">
-                                    <input type="hidden" name="estoque" value="<?php echo $value['item_estoque'] ?>">
-                                    <input type="hidden" name="preco" value="<?php echo $value['item_preco'] ?>">
-                                    <input type="hidden" name="categoria" value="<?php echo $value['cat_id'] ?>">
-                                    <button type="submit" name="remove" class="btn btn-primary" value="<?php echo $value['item_id'] ?>" >Sim, excluir</button>
-                                </form>
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>                             
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- delete -->
+                            <div class="card-estoque ps-2 pe-2"><?php echo $value['item_estoque']?> no estoque</div>
 
-                <div class="col-6 col-md-6 col-lg-6 col-xl-4" >
-                    <div class="item card shadow-sm animate__animated animate__fadeInUp"
-                        style="animation-delay: <?php echo $animation?>s;"> 
-                        <div  style="background-image: url(<?php echo INCLUDE_PATH?>img/<?php echo $value['item_imagem'] ?>);" class="card-img"></div>
-
-                        <div class="card-body d-flex flex-column ">
-                            <p class="card-title d-flex justify-content-center"><?php echo $value['item_nome'] ?></p>
-                            <p class="card-price d-flex justify-content-center">R$ <?php echo $formatPreco ?></p>
-                            <div class=" d-flex justify-content-center align-items-center">
-                                <div class="btn-group">
-                                <a class="nav-link active" aria-current="page" href="#">
-                                    <i class='modal-button bx bxs-info-circle bx-tada-hover' data-bs-toggle="modal" data-bs-target="#modalInfo<?php echo $value['item_id'] ?>"></i>
-                                </a>
-
-                                <a class="nav-link active" aria-current="page" href="#">
-                                    <i class='modal-button bx bx-edit bx-tada-hover'  data-bs-toggle="modal" data-bs-target="#modalAlterar<?php echo $value['item_id'] ?>"></i>
-                                </a>
-                                <a class="nav-link active" aria-current="page" href="#">
-                                    <i class='modal-button bx bxs-trash bx-tada-hover'  data-bs-toggle="modal" data-bs-target="#modalDelete<?php echo $value['item_id'] ?>"></i>
-                                </a>
+                            <div class="card-body d-flex flex-column ">
+                                <p class="card-title d-flex justify-content-center"><?php echo $value['item_nome'] ?></p>
+                                <p class="card-price d-flex justify-content-center mb-0">R$ <?php echo number_format($value['item_preco'],2,',','.') ?></p>
+                                <div class=" d-flex justify-content-center align-items-center">
+                                    <a class="nav-link active" aria-current="page" href="<?php echo INCLUDE_PATH_PAINEL;?>item/editarItem/<?php echo $value['item_id'] ?>">
+                                        <i class='bx bx-edit bx-tada-hover'></i>
+                                    </a>
                                 </div>
                             </div>
-                        </div>
+                        </div><!-- item -->
                     </div>
-                </div>
 
+                    <!-- Para itens sem estoque -->
+
+                <?php }else{ ?>
+                    <div class="col-6 col-md-6 col-lg-6 col-xl-4" >
+                        <div class="item card shadow-sm animate__animated animate__fadeInUp"
+                            style="animation-delay: <?php echo $animation?>s;"> 
+                            <div  style="background-image: url(<?php echo INCLUDE_PATH?>img/<?php echo $value['item_imagem'] ?>);" class="card-img gray"></div>
+
+                            <div class="card-estoque sem-estoque ps-2 pe-2">Sem estoque</div>
+
+                            <div class="card-body d-flex flex-column ">
+                                <p class="card-title d-flex justify-content-center"><?php echo $value['item_nome'] ?></p>
+                                <p class="card-price d-flex justify-content-center mb-0">R$ <?php echo number_format($value['item_preco'],2,',','.') ?></p>
+                                <div class=" d-flex justify-content-center align-items-center">
+                                    <a class="nav-link active" aria-current="page" href="<?php echo INCLUDE_PATH_PAINEL;?>item/editarItem/<?php echo $value['item_id'] ?>">
+                                        <i class='bx bx-edit bx-tada-hover'></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div><!-- item -->
+                    </div>
                 <?php
-                $animation = $animation + 0.3;
+
                     }
+                $animation = $animation + 0.3;
+                }
+            }
+                    
                 ?>
+
 
                 
             </div><!-- row -->

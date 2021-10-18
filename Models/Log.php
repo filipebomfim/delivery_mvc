@@ -39,7 +39,6 @@
                     "SELECT * FROM tb_log 
                      INNER JOIN tb_log_tipo
                      ON log_tipo = log_tipo_id
-                     ORDER BY log_registro DESC
                     "
                 );
                 $sql->execute();

@@ -38,6 +38,9 @@ nav{
     background: #212529 !important;
 }
 
+.gray{
+    filter: grayscale(1);
+}
 
 #content{
     padding-top: 0 !important;
@@ -229,13 +232,14 @@ table td{
     font-size: 14px !important;
 }
 
+
 .filtro{
     margin-bottom: 30px;
 }
 
 
 .filtro a button{
-    width: 150px !important;
+    width: 160px !important;
     border-radius: 0;
     border-bottom: 0;
     color: #212529;
@@ -287,13 +291,22 @@ table td{
     color: black;
     font-weight: 800;
     text-align: center;
-    margin: 5px !important;
 }
 
 .item .card-estoque{
     font-size: 14px;
-    color: black;
-    font-weight: 800;
+    background-color: green;
+    color: white;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    display: block !important;
+}
+
+.item .sem-estoque{
+    background-color: red;
 }
 
 .item i{
@@ -303,21 +316,13 @@ table td{
 }
 
 
-.item a:nth-child(2){
-    color: #bf7e04;
-}
-
-.item a:last-child{
-    color: red;
-}
-
 .item a{
+    color: #bf7e04;
     padding: 5px 5px !important;
 }
 
-.item .info{
-    width: 100% !important;
-    position: relative !important;
+.item a:hover{
+    color:#e6b22c;
 }
 
 .subtitulo{

@@ -7,7 +7,7 @@
         <?php 
             if(!isset($_SESSION['carrinho'])){
                 echo '<div class="alert alert-light" role="alert">
-                            <i class="bx bx-check pe-2"></i>
+                            <i class="bx bx-x pe-2"></i>
                             Seu carrinho está vazio!
                         </div>';
 

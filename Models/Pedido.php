@@ -83,15 +83,44 @@
             return $lucro;
         }
 
-        public function getPedidosPorDia($data){
+        public function getPedidosDia($data){
             $dados = array();
             $sql = $this->conexao->prepare(
-                "SELECT * FROM `tb_pedido` where DATE(pedido_horario) = DATE(?)"
+                "SELECT * FROM tb_item i 
+                INNER JOIN tb_pedido_itens pi 
+                ON i.item_id = pi.pi_item_id
+                INNER JOIN tb_pedido p
+                ON p.pedido_id = pi.pi_pedido_id
+                INNER JOIN tb_categoria c
+                ON c.cat_id = i.item_categoria
+                where DATE(pedido_horario) = DATE(?)"
             );
 
             $sql->execute(array($data));
             $dados = $sql->fetchall(PDO::FETCH_ASSOC);
             return $dados;
         }
+
+        public function getVendasDia($data){
+            $dados = array();
+            $sql = $this->conexao->prepare(
+                "SELECT p.pedido_id, p.pedido_horario, SUM(i.item_preco * pi.pi_quantidade) AS pedido_precototal
+
+                FROM tb_item i 
+                INNER JOIN tb_pedido_itens pi 
+                ON i.item_id = pi.pi_item_id
+                INNER JOIN tb_pedido p
+                ON p.pedido_id = pi.pi_pedido_id
+                INNER JOIN tb_categoria c
+                ON c.cat_id = i.item_categoria
+                where DATE(pedido_horario) = DATE(?)
+                GROUP BY p.pedido_id"
+            );
+
+            $sql->execute(array($data));
+            $dados = $sql->fetchall(PDO::FETCH_ASSOC);
+            return $dados;
+        }
+
     }
 ?>

@@ -1,7 +1,7 @@
     <div class="banner">
         <div class="d-flex h-100 text-center text-white">
             <div class="bg-transp"></div>  
-            <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">                
+            <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column animate__animated animate__fadeInUp">                
                 <div class="px-3 chamada d-flex flex-column justify-content-center">
                     <div class="chamada-content">
                         <h1 class="mb-3">O Melhor Hambúrguer da Bahia!</h1>

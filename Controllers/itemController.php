@@ -11,8 +11,25 @@
             $col = array_column($dados['categorias'],"cat_nome");
             array_multisort($col,SORT_ASC,$dados['categorias']);
             $item = new Item();
-            if($filtro == 0) $dados['itens'] = $item->getItens();
-            else $dados['itens'] = $item->filtrarCategoria($filtro);
+            if($filtro == 0) {
+                $dados['itens'] = $item->getItens();
+                $dados['titulo'] = 'Itens Cadastrados - Todos os Itens';
+            }else{
+                $dados['itens'] = $item->filtrarCategoria($filtro);
+                $dados['titulo'] = $categorias->getCategoriaItem($filtro);
+                $dados['titulo'] = 'Itens Cadastrados - '.$dados['titulo']['cat_nome'];
+            }
+            if(!empty($dados['itens'])){
+
+                foreach ($dados['itens'] as $key => $value) {
+                    if($value['item_estoque'] == 0) $estoque[$key] = 0;
+                    else $estoque[$key] = 1;
+                }
+
+                array_multisort($estoque,  SORT_DESC,
+                                array_column($dados['itens'], 'item_nome'), SORT_ASC,
+                                $dados['itens']);
+            }
             $this->carregarTemplate('painel/visualizarItens',$dados,'painel/templates/header','painel/templates/footer');
         }
 
@@ -24,7 +41,8 @@
 
         public function editarItem($item_id){
             $item = new Item();
-            $dados = $item->getItem($item_id);
+            $item->setId($item_id);
+            $dados = $item->getItem();
             $this->carregarTemplate('painel/editarItem',$dados,'painel/templates/header','painel/templates/footer');
         }
 
@@ -99,16 +117,9 @@
                     $item->setCategoria($_POST['categoria']);
                     $item->setImagem($_FILES['imagem']);
 
-                    if($item->validarImagem($item->getImagem())){
-                        $item->setImagem($item->uploadFile($item->getImagem()));
-                        $itemInfo = array();
-                        $itemInfo['nome'] = $item->getNome();
-                        $itemInfo['descricao'] = $item->getDescricao();
-                        $itemInfo['estoque'] = $item->getEstoque();
-                        $itemInfo['preco'] = $item->getPreco();
-                        $itemInfo['categoria'] = $item->getCategoria();
-                        $itemInfo['imagem'] = $item->getImagem();
-                        if($item->insertItem($itemInfo)){
+                    if($item->validarImagem()){
+                        $item->setImagem($item->uploadFile());
+                        if($item->insertItem()){
                             $_SESSION['status'] = 'sucesso';
                             $_SESSION['status_msg'] = 'Item cadastrado com sucesso!';
                             $registro = array();
@@ -139,7 +150,7 @@
                 $item->setId($_POST['id']);
                 if ($_FILES['imagem']['name'] =='') {                
                     $item->setImagem($_POST['old_imagem']);
-                    if($item->updateItem($item->getId(),$item->getDescricao(),$item->getEstoque(),$item->getPreco(),$item->getImagem())){
+                    if($item->updateItem()){
                         $_SESSION['status'] = 'sucesso';
                         $_SESSION['status_msg'] = 'Item atualizado com sucesso!';
                         $registro = array();
@@ -151,9 +162,9 @@
                     } 
                 }else{
                     $item->setImagem($_FILES['imagem']);
-                    if($item->validarImagem($item->getImagem())){
-                        $item->setImagem($item->uploadFile($item->getImagem()));
-                        if($item->updateItem($item->getId(),$item->getDescricao(),$item->getEstoque(),$item->getPreco(),$item->getImagem())){
+                    if($item->validarImagem()){
+                        $item->setImagem($item->uploadFile());
+                        if($item->updateItem()){
                             $_SESSION['status'] = 'sucesso';
                             $_SESSION['status_msg'] = 'Item atualizado com sucesso!';
                             $registro = array();

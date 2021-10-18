@@ -66,12 +66,12 @@
             $this->categoria = $dado;
         }
 
-        public function validarImagem($imagem){
-            if(($imagem['type'] == 'image/jpeg') ||
-              ($imagem['type'] == 'image/jpg') ||
-              ($imagem['type'] == 'imagem/png')){
+        public function validarImagem(){
+            if(($this->imagem['type'] == 'image/jpeg') ||
+              ($this->imagem['type'] == 'image/jpg') ||
+              ($this->imagem['type'] == 'imagem/png')){
                 
-                $tamanho = intval($imagem['size'] /1024);
+                $tamanho = intval($this->imagem['size'] /1024);
                 if($tamanho < 600) return true;
                 else{
                     $_SESSION['status'] = 'erro';
@@ -85,11 +85,11 @@
             return false;
         }
 
-        public function uploadFile($imagem){
+        public function uploadFile(){
            
-            $formato = explode('.',$imagem['name']);
+            $formato = explode('.',$this->imagem['name']);
             $imagemNome = uniqid().'.'.$formato[count($formato)-1];
-            if(move_uploaded_file($imagem['tmp_name'],'img/'.$imagemNome)){
+            if(move_uploaded_file($this->imagem['tmp_name'],'img/'.$imagemNome)){
                 return $imagemNome;
             }else {
                 $_SESSION['status'] = 'erro';
@@ -98,13 +98,13 @@
             }            
         }
 
-        public function insertItem($item){
+        public function insertItem(){
             try {
                 $sql = $this->conexao->prepare(
                     "INSERT INTO tb_item
                     VALUES (null,?,?,?,?,?,?)"
                 );
-                $sql->execute(array($item['nome'],$item['descricao'],$item['estoque'],$item['preco'], $item['imagem'], $item['categoria']));
+                $sql->execute(array($this->nome,$this->descricao,$this->estoque,$this->preco, $this->imagem, $this->categoria));
                 return true;
             } catch (\Throwable $th) {
                 $_SESSION['status'] = 'erro';
@@ -113,7 +113,7 @@
             }                
         }
 
-        public function updateItem($id,$descricao,$estoque,$preco,$imagem){
+        public function updateItem(){
             try {
                 $sql = $this->conexao->prepare(
                     "UPDATE tb_item
@@ -124,7 +124,7 @@
                     WHERE item_id = ?;"
                 );
 
-                $sql->execute(array($descricao,$estoque,$preco,$imagem,$id));
+                $sql->execute(array($this->descricao,$this->estoque,$this->preco,$this->imagem,$this->id));
                 return true;
             } catch (\Throwable $th) {
                 $_SESSION['status'] = 'erro';
@@ -163,7 +163,7 @@
                  ON i.item_categoria = c.cat_id 
                  WHERE i.item_id = ?               
             ");
-            $sql->execute(array(intval($this->getID())));
+            $sql->execute(array(intval($this->id)));
             $dados = $sql->fetch(PDO::FETCH_ASSOC);
             return $dados;
         }

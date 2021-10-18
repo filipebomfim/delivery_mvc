@@ -1,13 +1,13 @@
 <section class="cardapio">
     <div class="container">
-        <div class="titulo mb-3 p-1">
-            <p>Cardápio</p>            
+        <div class="titulo mb-3 p-1 animate__animated animate__fadeInUp">
+            <p><?php echo $this->dados['titulo'] ?></p>            
         </div>
 
         <?php 
             if(!empty($_SESSION['status'])){
                 if($_SESSION['status'] == 'sucesso') {
-                    echo '<div class="alert alert-success" role="alert">
+                    echo '<div class="alert alert-success animate__animated animate__fadeInUp" role="alert">
                             <i class="bx bx-check pe-2"></i>'
                             .$_SESSION['status_msg'].
                         '</div>';
@@ -19,11 +19,10 @@
                 }
 
                 unset($_SESSION['status']);
-                //unset($_SESSION['carrinho']);
             }
         ?>
 
-        <div class="row mt-5">
+        <div class="row mt-5 animate__animated animate__fadeInUp">
             <div class="col-md-2 text-center ">
                 <div class="filtro">
                     <div class="btn-group-vertical d-none d-sm-block">
@@ -35,7 +34,7 @@
                                 foreach ($this->dados['categorias'] as $key => $value) {
                             ?>
                                 <a href="<?php echo INCLUDE_PATH_SITE?>cardapio/filtrarCardapio/<?php echo $value['cat_id'] ?>">
-                                    <button type="button" class="btn btn-outline-primary"><?php echo $value['cat_nome'] ?></button>
+                                    <button type="button" class="btn btn-outline-primar"><?php echo $value['cat_nome'] ?></button>
                                 </a>
                             <?php
                                 }
@@ -65,42 +64,26 @@
             <div class="itens-cardapio col-md-10">
                 <div class="row">
 
-                <?php 
-                    foreach($this->dados['itens'] as $key => $value){
-                    $formatPreco = $value['item_preco'];
-                    $formatPreco = number_format($formatPreco,2,',','.');
+                <?php if(empty($this->dados['itens'])){
+                    echo '<div class="d-flex justify-content-center align-items-center" role="alert">
+                        <i class="bx bx-x pe-1"></i>
+                        Nenhum Item cadastrado!
+                    </div>';
+                }else{
+                     
+                    $animation = 0.4;
+                    foreach ($this->dados['itens'] as $key => $value) {
                 ?>
 
-                <!-- Para estoque zerado -->
-
-                <?php if($value['item_estoque']==0){ ?>
-
-                <div class="col-6 col-md-6 col-lg-6 col-xl-4" >
-                    <div class="gray item card shadow-sm animate__animated animate__fadeInUp"> 
-                        <div  style="background-image: url(<?php echo INCLUDE_PATH?>img/<?php echo $value['item_imagem'] ?>);" class="card-img"></div>
-
-                        <div class="card-price ps-2">R$ <?php echo $formatPreco?></div>
-
-                        <div class="card-body d-flex flex-column ">
-                            <p class="card-title d-flex justify-content-center mb-3"><?php echo $value['item_nome'] ?></p>
-
-                            <p class="card-description mb-3"><?php echo $value['item_descricao'] ?></p>
-                            
-                        </div>
-                        <div class=" mb-3 d-flex justify-content-center align-items-center">
-                            <span>Sem estoque</span>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Para itens com estoque -->
-                <?php } else { ?>
+
+                <?php if($value['item_estoque']>0){ ?>
 
                 <div class="col-6 col-md-6 col-lg-6 col-xl-4" >
-                    <div class="item card shadow-sm animate__animated animate__fadeInUp"> 
+                    <div class="item card shadow-sm animate__animated animate__fadeInUp" style="animation-delay: <?php echo $animation?>s;"> 
                         <div  style="background-image: url(<?php echo INCLUDE_PATH?>img/<?php echo $value['item_imagem'] ?>);" class="card-img"></div>
 
-                        <div class="card-price ps-2">R$ <?php echo $formatPreco?></div>
+                        <div class="card-price ps-2 pe-2">R$ <?php echo number_format($value['item_preco'],2,',','.')?></div>
 
                         <div class="card-body d-flex flex-column ">
                             <p class="card-title d-flex justify-content-center mb-3"><?php echo $value['item_nome'] ?></p>
@@ -115,9 +98,32 @@
                         </div>
                     </div>
                 </div>
-                <?php } ?>
 
-                <?php } ?>
+                <!-- Para itens zerados -->
+                <?php } else { ?>
+
+                <div class="col-6 col-md-6 col-lg-6 col-xl-4" >
+                    <div class="item card shadow-sm animate__animated animate__fadeInUp" style="animation-delay: <?php echo $animation?>s;"> 
+                        <div  style="background-image: url(<?php echo INCLUDE_PATH?>img/<?php echo $value['item_imagem'] ?>);" class="card-img gray"></div>
+
+                        <div class="card-price ps-2 pe-2 sem-estoque">Sem estoque</div>
+
+                        <div class="card-body d-flex flex-column ">
+                            <p class="card-title d-flex justify-content-center mb-3"><?php echo $value['item_nome'] ?></p>
+
+                            <p class="card-description mb-3"><?php echo $value['item_descricao'] ?></p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <?php
+
+                    }
+                $animation = $animation + 0.3;
+                }
+            }
+                    
+                ?>
                 </div>
             </div>
         </div><!-- row -->
