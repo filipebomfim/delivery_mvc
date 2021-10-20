@@ -15,32 +15,31 @@
     <title>Site Principal</title>
 </head>
     <body>
-
-        <header class="menu autohide">
+        <nav class="menu fixed-top navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <nav class="row">
-                    <div class="col-md-2 d-flex justify-content-center">
-                        <a href="<?php echo INCLUDE_PATH_SITE ?>carrinho" class="nav-link nav-item align-middle">
-                            <button type="button" class="d-flex justify-content-center carrinho btn btn-primary position-relative">
-                                <i class='bx bxs-cart'></i>
-                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                    <?php 
-                                        if(isset($_SESSION['carrinho'])) echo carrinhoController::CountItensCart();
-                                        else echo '0';
-                                    ?>
-                                    <span class="visually-hidden">unread messages</span>
-                                </span>
-                            </button>
-                        </a>
-                    </div>
-
-                    <ul class="nav col-md-8 d-flex justify-content-center">
-                        <li><a href="<?php echo INCLUDE_PATH_SITE?>" class="nav-link px-2 link-secondary">Home</a></li>
-                        <li><a href="#" class="nav-link px-2 link-dark">Os melhores</a></li>
-                        <li><a href="<?php echo INCLUDE_PATH_SITE?>cardapio" class="nav-link px-2 link-dark">Cardápio</a></li>
+                <div class="d-flex justify-content-center">
+                    <a href="<?php echo INCLUDE_PATH_SITE ?>carrinho" class="nav-link nav-item align-middle">
+                        <button type="button" class="d-flex justify-content-center carrinho btn btn-primary position-relative">
+                            <i class='bx bxs-cart'></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                <?php 
+                                    if(isset($_SESSION['carrinho'])) echo carrinhoController::CountItensCart();
+                                    else echo '0';
+                                ?>
+                                <span class="visually-hidden">unread messages</span>
+                            </span>
+                        </button>
+                    </a>
+                </div>
+                <button class="navbar-toggler menu-mobile" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="menu-nav navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
+                            <li><a href="<?php echo INCLUDE_PATH_SITE?>" class="nav-link px-2 link-secondary">Home</a></li>
+                            <li><a href="<?php echo INCLUDE_PATH_SITE?>cardapio" class="nav-link px-2 link-dark">Cardápio</a></li>
                     </ul>
-
-                    <div class="loggout col-md-2 d-flex justify-content-center">
+                    <div class="loggout d-flex justify-content-center">
                         <ul class="nav navbar-nav">
                             <li class="nav-item d-flex">
                                 <a href="<?php echo INCLUDE_PATH?>" class="nav-link nav-item align-middle">
@@ -50,12 +49,9 @@
                             </li>
                         </ul>
                     </div>
-
-                    
-                </nav>
-            </div><!-- container -->
-        </header>
-
+                </div>
+            </div>
+        </nav>
             <!--------------------------------------------------->
             <?php 
                 $this->carregarViewnoTemplate($nomeView,$dadosModel);

@@ -14,9 +14,11 @@ html,body{
     overflow-y: hidden;
 }
 
+.selecao .row{
+    height: 100vh;
+}
 
-.cover{
-    height: 100vh;    
+.cover{ 
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -51,4 +53,11 @@ html,body{
     opacity: 0.95;
     transition: width 2s, height 2s, transform 2s;
     color: yellow;
+}
+
+@media screen and (max-width: 768px){
+
+    .cover{
+        height: 50% !important;
+    }
 }

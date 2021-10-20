@@ -1,0 +1,21 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.erro{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.erro h1{
+    color: black;
+    text-align: center;
+}
+
+.erro p{
+    color: black;
+    text-align: center;
+}

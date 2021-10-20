@@ -11,8 +11,8 @@
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="<?php echo INCLUDE_PATH;?>css\dashboard.css">
-    <link rel="stylesheet" href="<?php echo INCLUDE_PATH;?>css\style.css">
+    <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>css\dashboard.css">
+    <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>css\style_painel.css">
     <title>Sistema de Estoque</title>
 </head>
     <body>
@@ -22,23 +22,23 @@
             <div class="p-4 pt-5">
                 <div class="perfil mx-auto">
                     <a href="#" class="d-flex flex-column mx-auto align-items-center text-white text-decoration-none">
-                        <img src="<?php echo INCLUDE_PATH?>img/perfil-2.jpg" alt="hugenerd" width="64" height="64" class="rounded-circle">
+                        <img src="<?php echo INCLUDE_PATH ?>img/perfil-2.jpg" alt="hugenerd" width="64" height="64" class="rounded-circle">
                         <div class="perfil-txt d-inline-flex flex-column justify-content-center align-items-center">
                             <span>Bem Vindo</span>
                             <span>Administrador</span>
-                        </div>  
+                        </div>
                     </a>
                 </div><!-- perfil -->
                 <ul class="list-unstyled components mb-5">
-                    
+
                     <li>
-                        <a href="<?php echo INCLUDE_PATH_PAINEL?>" class="align-middle">
-                            <i class='bx bx-home-alt'></i> 
+                        <a href="<?php echo INCLUDE_PATH_PAINEL ?>" class="align-middle">
+                            <i class='bx bx-home-alt'></i>
                             <span class="ms-1 .d-block  d-sm-inline primary">Home</span>
                         </a>
                     </li>
 
-                
+
                     <li>
                         <a href="#itensSubmenu" data-toggle="collapse" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle align-middle">
                             <i class='bx bx-list-ul'></i>
@@ -46,13 +46,13 @@
                         </a>
                         <ul class="collapse list-unstyled" id="itensSubmenu">
                             <li>
-                                <a href="<?php echo INCLUDE_PATH_PAINEL?>item/visualizarItens">
+                                <a href="<?php echo INCLUDE_PATH_PAINEL ?>item/visualizarItens">
                                     <i class='bx bx-show'></i>
                                     <span class=".d-block d-sm-inline">Visualizar</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo INCLUDE_PATH_PAINEL?>item/cadastrarItem">
+                                <a href="<?php echo INCLUDE_PATH_PAINEL ?>item/cadastrarItem">
                                     <i class='bx bx-plus-circle'></i>
                                     <span class=".d-block  d-sm-inline">Cadastrar</span>
                                 </a>
@@ -103,16 +103,16 @@
         </nav>
 
         <!-- Conteúdo  -->
-      
+
       <div id="content">
-      
+
         <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
           <div class="container-fluid">
             <button type="button" id="sidebarCollapse" class="btn btn-primary">
                 <i class='bx bx-menu-alt-left'></i>
               <span class="sr-only">Toggle Menu</span>
             </button>
-          
+
             <div class="loggout ">
               <ul class="nav navbar-nav">
                 <li class="nav-item d-flex">
@@ -128,11 +128,11 @@
 
         <div class="container">
             <!--------------------------------------------------->
-            <?php 
-                $this->carregarViewnoTemplate($nomeView,$dadosModel);
-            ?>
+            <?php
+$this->carregarViewnoTemplate($nomeView, $dadosModel);
+?>
             <!--------------------------------------------------->
-        </div><!-- Conteúdo Dinâmico -->       
+        </div><!-- Conteúdo Dinâmico -->
 
       </div>
     </div>

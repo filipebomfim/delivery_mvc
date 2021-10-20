@@ -61,8 +61,8 @@
 
 
 
-            <div class="itens-cardapio col-md-10">
-                <div class="row">
+            <div class="col-md-8 col-lg-9 mx-auto">
+                <div class="row itens-cardapio">
 
                 <?php if(empty($this->dados['itens'])){
                     echo '<div class="d-flex justify-content-center align-items-center" role="alert">
@@ -91,11 +91,17 @@
                             <p class="card-description mb-3"><?php echo $value['item_descricao'] ?></p>
                             
                         </div>
-                        <div class=" mb-3 d-flex justify-content-center align-items-center">
+                        <div class=" mb-3 ms-2 me-2 d-flex justify-content-center align-items-center">
                             <a href="<?php echo INCLUDE_PATH_SITE?>carrinho/addToCart/<?php echo $value['item_id'] ?>">
                                 <button class="btn btn-outline">Adicionar ao carrinho</button>
                             </a>                            
                         </div>
+
+                        <div class="cart-mobile">
+                            <a href="<?php echo INCLUDE_PATH_SITE?>carrinho/addToCart/<?php echo $value['item_id'] ?>">
+                                <i class='bx bxs-cart-add bx-tada' ></i>
+                            </a>
+                        </div><!-- cart-mobile -->
                     </div>
                 </div>
 

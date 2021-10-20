@@ -1,10 +1,4 @@
-    <footer class="footer mt-auto">
-        <div class="container">
-            <span class="text-muted">Filipe Bomfim Santos Furtado - 2021</span>
-        </div>        
-    </footer>
-
-
+    
     <script src="<?php echo INCLUDE_PATH;?>js/jquery.min.js"></script>
     <script src="<?php echo INCLUDE_PATH;?>js/main.js"></script>
     <script src="<?php echo INCLUDE_PATH;?>js/popper.js"></script>
