@@ -16,8 +16,7 @@
                 $dados['titulo'] = 'Itens Cadastrados - Todos os Itens';
             }else{
                 $dados['itens'] = $item->filtrarCategoria($filtro);
-                $dados['titulo'] = $categorias->getCategoriaItem($filtro);
-                $dados['titulo'] = 'Itens Cadastrados - '.$dados['titulo']['cat_nome'];
+                $dados['titulo'] = 'Itens Cadastrados - ' .$categorias->getCategoriaNome($filtro)['cat_nome'];
             }
             if(!empty($dados['itens'])){
 
@@ -79,6 +78,7 @@
         public function remove(){
             if(isset($_POST['remove'])){
                 $item = new Item();
+                $cat = new Categoria();
                 $item->setNome($_POST['nome']);
                 $item->setEstoque($_POST['estoque']);
                 $item->setPreco($_POST['preco']);
@@ -88,7 +88,7 @@
                     $_SESSION['status_msg'] = 'Item removido com sucesso!';
                     $registro = array();
                     $registro['tipo'] = EXCLUSÃO;
-                    $registro['descricao'] = 'Nome: '.$item->getNome().',Estoque: '.$item->getEstoque().',Preço: '.$item->getPreco().',Categoria: '.$item->getCategoriaNome($item->getCategoria())['cat_nome'].'
+                    $registro['descricao'] = 'Nome: '.$item->getNome().',Estoque: '.$item->getEstoque().',Preço: '.$item->getPreco().',Categoria: '.$cat->getCategoriaNome($item->getCategoria())['cat_nome'].'
                     ';
                     $log = new Log();
                     $log->setRegistro($registro);
@@ -105,7 +105,8 @@
 
         public function checkInsert(){
                 if($this->validarFormulario()){
-                    $item = new Item;
+                    $item = new Item();
+                    $cat = new Categoria();
                     $item->setNome($_POST['nome']);
                     $item->setDescricao($_POST['descricao']);
                     $item->setEstoque($_POST['estoque']);
@@ -124,7 +125,7 @@
                             $_SESSION['status_msg'] = 'Item cadastrado com sucesso!';
                             $registro = array();
                             $registro['tipo'] = CADASTRO;
-                            $registro['descricao'] = 'Nome: '.$item->getNome().',Estoque: '.$item->getEstoque().',Preço: '.$item->getPreco().',Categoria: '.$item->getCategoriaNome($item->getCategoria())['cat_nome'].'
+                            $registro['descricao'] = 'Nome: '.$item->getNome().',Estoque: '.$item->getEstoque().',Preço: '.$item->getPreco().',Categoria: '.$cat->getCategoriaNome($item->getCategoria())['cat_nome'].'
                             ';
                             $log = new Log();
                             $log->setRegistro($registro);
@@ -142,6 +143,7 @@
 
         public function checkUpdate(){
                 $item = new Item();
+                $cat = new Categoria();
                 $item->setNome($_POST['nome']);
                 $item->setCategoria($_POST['cat']);
                 $item->setDescricao($_POST['descricao']);
@@ -155,7 +157,7 @@
                         $_SESSION['status_msg'] = 'Item atualizado com sucesso!';
                         $registro = array();
                         $registro['tipo'] = ALTERAÇÃO;
-                        $registro['descricao'] = 'Nome: '.$item->getNome().',Estoque: '.$item->getEstoque().',Preço: '.$item->getPreco().',Categoria: '.$item->getCategoriaNome($item->getCategoria())['cat_nome'].'
+                        $registro['descricao'] = 'Nome: '.$item->getNome().',Estoque: '.$item->getEstoque().',Preço: '.$item->getPreco().',Categoria: '.$cat->getCategoriaNome($item->getCategoria())['cat_nome'].'
                         ';
                         $log = new Log();
                         $log->setRegistro($registro);
@@ -169,7 +171,7 @@
                             $_SESSION['status_msg'] = 'Item atualizado com sucesso!';
                             $registro = array();
                             $registro['tipo'] = ALTERAÇÃO;
-                            $registro['descricao'] = 'Nome: '.$item->getNome().',Estoque: '.$item->getEstoque().',Preço: '.$item->getPreco().',Categoria: '.$item->getCategoriaNome($item->getCategoria())['cat_nome'].',IMAGEM ALTERADA
+                            $registro['descricao'] = 'Nome: '.$item->getNome().',Estoque: '.$item->getEstoque().',Preço: '.$item->getPreco().',Categoria: '.$cat->getCategoriaNome($item->getCategoria())['cat_nome'].',IMAGEM ALTERADA
                             ';
                             $log = new Log();
                             $log->setRegistro($registro);

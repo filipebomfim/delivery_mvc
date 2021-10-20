@@ -59,33 +59,6 @@
                             </li>
                         </ul>
                     </li>
-
-                    <li>
-                        <a href="#servicosSubmenu" data-bs-toggle="collapse" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle align-middle">
-                            <i class='bx bx-border-all'></i>
-                            <span class=".d-block  d-sm-inline">Categorias</span>
-                        </a>
-                        <ul class="collapse list-unstyled" id="servicosSubmenu">
-                            <li>
-                                <a href="#">
-                                    <i class='bx bx-show'></i>
-                                    <span class=".d-block  d-sm-inline">Visualizar</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class='bx bx-plus-circle'></i>
-                                    <span class=".d-block  d-sm-inline">Cadastrar</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="<?php echo INCLUDE_PATH ?>home" class="align-middle">
-                            <i class='bx bx-line-chart'></i>
-                            <span class="ms-1 .d-block  d-sm-inline primary">Estatísticas</span>
-                        </a>
-                    </li>
                     <li>
                         <a href="<?php echo INCLUDE_PATH_PAINEL ?>log/visualizarLog" class="align-middle">
                             <i class='bx bx-notepad'></i>
@@ -129,8 +102,8 @@
         <div class="container">
             <!--------------------------------------------------->
             <?php
-$this->carregarViewnoTemplate($nomeView, $dadosModel);
-?>
+                $this->carregarViewnoTemplate($nomeView, $dadosModel);
+            ?>
             <!--------------------------------------------------->
         </div><!-- Conteúdo Dinâmico -->
 

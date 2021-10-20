@@ -19,8 +19,7 @@ class cardapioController extends Controller
             $dados['titulo'] = 'Cardápio - Todos os Itens';
         } else {
             $dados['itens'] = $item->filtrarCategoria($filtro);
-            $dados['titulo'] = $categorias->getCategoriaItem($filtro);
-            $dados['titulo'] = 'Cardápio - ' . $dados['titulo']['cat_nome'];
+            $dados['titulo'] = 'Cardápio - ' .$categorias->getCategoriaNome($filtro)['cat_nome'];
         }
         if (!empty($dados['itens'])) {
 

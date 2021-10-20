@@ -1,11 +1,11 @@
 <div class="conteudo titulo animate__animated animate__fadeInUp">
     <i class='bx bx-home-alt'></i>
-    <span>Registros</span>
+    <span><?php echo $this->dados['titulo'] ?></span>
 </div>
 
 <div class="conteudo animate__animated animate__fadeInUp">
     <div class="row">
-        <div class="col-md-2 col-sm-12 text-center">
+        <div class="col-md-2 col-sm-12 text-center mt-4">
             <div class="filtro">
                 <div class="btn-group-vertical d-none d-sm-block filtro-log">
                     <a href="<?php echo INCLUDE_PATH_PAINEL ?>log/visualizarLog">
@@ -41,8 +41,15 @@
             </div> 
         </div>
         
-        <div class="col-xl-9 col-lg-8 col-md-6 col-sm-12 mx-auto">
-            <table class="table table-sm ">
+        <div class="col-xl-9 col-lg-8 col-md-6 col-sm-12 table-responsive mx-auto ">
+        <?php if(empty($this->dados['log'])){
+                    echo '<div class="d-flex justify-content-center align-items-center" role="alert">
+                        <i class="bx bx-x pe-1"></i>
+                        Nenhum Item cadastrado!
+                    </div>';
+                }else{
+        ?>
+            <table class="table align-middle table-sm">
                 <thead class=" table-dark">
                     <tr >
                         <th scope="col">Ação</th>
@@ -64,6 +71,7 @@
                         </tr>
                         <?php 
                             }
+                }
                         ?>
                 </tbody>
             </table>

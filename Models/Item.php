@@ -238,10 +238,6 @@
             return $sql->fetchall(PDO::FETCH_ASSOC);
         }
 
-        public function getCategoriaNome($categoria){
-            $cat = new Categoria();
-            return $cat->getCategoriaItem($categoria);
-        }
 
         public function removerEstoque($quantidade){
                 $sql = $this->conexao->prepare(

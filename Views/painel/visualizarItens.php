@@ -6,12 +6,12 @@
 <?php 
     if(!empty($_SESSION['status'])){
         if($_SESSION['status'] == 'sucesso') {
-            echo '<div class="alert alert-success" role="alert">
+            echo '<div class="alert alert-success animate__animated animate__fadeInUp" role="alert">
                     <i class="bx bx-check pe-2"></i>'
                     .$_SESSION['status_msg'].
                 '</div>';
         }else if($_SESSION['status'] == 'erro'){
-            echo '<div class="alert alert-danger" role="alert">
+            echo '<div class="alert alert-danger animate__animated animate__fadeInUp" role="alert">
                     <i class="bx bx-error-circle pe-2"></i>'
                     .$_SESSION['status_msg'].
                  '</div>';
