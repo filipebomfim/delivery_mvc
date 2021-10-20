@@ -1,1 +1,83 @@
-# delivery_mvc
+<h1 align="center">
+    <a href="https://pt-br.reactjs.org/">📦 Sistema de Estoque</a>
+</h1>
+<p align="center">Projeto de um mini sistema web de estoque para itens de uma lanchonete baseado na arquiterura MVC</p>
+
+ [![Generic badge](https://img.shields.io/badge/VERSÃO-1.0-<COLOR>.svg)](https://shields.io/)
+ [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://shields.io/)
+ 
+ <h4 align="center"> 
+	🚧  Em construção...  🚧
+</h4>
+
+<p align="center">
+ <a href="#features">Funcionalidades</a> •
+ <a href="#requisitos">Pré-requisitos</a> •
+ <a href="#tecnologias">Tecnologias</a> • 
+ <a href="#autor">Autor</a>
+</p>
+
+<h3 id="features">⚙️ Funcionalidades</h3>
+### Painel de Controle
+
+- [x] Cadastro de Itens
+- [x] Alteração de Itens
+- [x] Visualização de Itens Cadastrados
+- [x] Log de Cadastro e Alterações
+- [x] Card com total do lucro feito no dia 
+- [x] Card com total de itens cadastrados
+- [x] Card com total de vendas feitas no dia
+- [x] Detalhe dos últimos pedidos feitos no dia   
+- [ ] Exclusão de Itens
+- [ ] Estatísticas de Vendas
+- [ ] Cadastro, Exclusão e Alteração de Categorias
+
+### Site Principal
+- [x] Visualizar Cardápio
+- [x] Carrinho de Compras
+- [x] Adição de Itens no carrinho
+- [x] Cálculo do Valor Total do Carrinho
+- [x] Limpar Itens do Carrinho
+- [x] Fechar Pedido
+- [ ] Visualizar Histórico dos Pedidos
+- [ ] Exclusão de Itens únicos do Carrinho  
+
+<h3 id="requisitos">🎲 Pré-requisitos</h3>
+
+Antes de começar, você vai precisar ter instalado em sua máquina o [Git](https://git-scm.com) e o [xampp](https://www.apachefriends.org/pt_br/index.html). 
+Além disto é bom ter um editor para trabalhar com o código como o [VSCode](https://code.visualstudio.com/)
+
+### 🎲 Rodando o Back End (servidor) e o Banco de Dados
+
+```bash
+#Na pasta htdocs do xampp, inicie o git
+$ git init
+
+# Clone este repositório
+$ git clone https://github.com/filipebomfim/estoque_mvc
+
+#Execute o servidor Apache e o MySQL no painel de controle do xampp
+
+# Acesse a pasta do htdocs através de qualquer navevador web através da url
+http://127.0.0.1/ ou http://localhost
+
+# Crie uma base de dados chamada sistema_estoque no phpMyadmin, e importe o arquivo sistema_estoque.sql nela
+```
+
+<h3 id="tecnologias">🛠 Tecnologias</h3>
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- HTML5
+- CSS3
+- PHP
+- SQL
+- Bootstrap 5
+- Javascript
+- Jquery
+
+<h3 id="autor">🦸 Autor</h3>
+
+Feito com carinho e dedicação por mim, rs. Filipe Bomfim 👋🏽 Entre em contato!
+
+[![Gmail Badge](https://img.shields.io/badge/-filipe.bomfim99@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:filipe.bomfim99@gmail.com)](mailto:filipe.bomfim99@gmail.com)
