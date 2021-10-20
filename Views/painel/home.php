@@ -8,33 +8,32 @@
             <div class="dbox-wrapper col-lg-4 col-md-12 animate__animated animate__fadeInUp">
                 <div class="dbox dbox--color-1">
                     <div class="dbox__body">
-                        <div class="row">
-                            <div class="dbox-text col-md-8 col-6">
+                        <div>
+                            <div class="dbox-text">
                                 <span class="dbox__count">R$ <?php echo number_format($this->dados['lucro'],2,',','.') ?></span>
                                 <hr>
-                            </div><!-- dbox-text -->     
-                            <div class="dbox-icon col-md-4 col-6">
-                                <i class='bx bxs-dollar-circle'></i>
-                            </div><!-- dbox-icon -->                           
+                            </div><!-- dbox-text -->                                
                             <span class="dbox__title ">Lucro do dia</span>
-                        </div><!-- row -->
-                    </div>			
+                        </div>
+                    </div>
+                    <div class="dbox-icon">
+                        <i class='bx bxs-dollar-circle'></i>
+                    </div><!-- dbox-icon -->			
                 </div><!-- dbox -->
             </div>
             <div class="dbox-wrapper col-lg-4 col-md-12 animate__animated animate__fadeInUp">
                 <div class="dbox dbox--color-3">
                     <div class="dbox__body">
-                        <div class="row">
-                            <div class="dbox-text col-md-8 col-6">
+                        <div>
+                            <div class="dbox-text">
                                 <span class="dbox__count"><?php echo count($this->dados['qtdItens'])?></span>
                                 <hr>
                             </div><!-- dbox-text -->     
-                            <div class="dbox-icon col-md-4 col-6">
-                                <i class='bx bxs-food-menu'></i>
-                            </div><!-- dbox-icon --> 
                             <span class="dbox__title ">Itens Cadastrados</span>                          
-                            
-                        </div><!-- row -->
+                        </div>
+                        <div class="dbox-icon">
+                                <i class='bx bxs-food-menu'></i>
+                        </div><!-- dbox-icon --> 
                     </div>			
                 </div><!-- dbox -->
 
@@ -42,16 +41,16 @@
             <div class="dbox-wrapper col-lg-4 col-md-12 animate__animated animate__fadeInUp">
                 <div class="dbox dbox--color-2">
                     <div class="dbox__body">
-                        <div class="row">
-                            <div class="dbox-text col-md-8 col-6">
+                        <div>
+                            <div class="dbox-text">
                                 <span class="dbox__count"><?php echo count($this->dados['vendas']) ?></span>
                                 <hr>
-                            </div><!-- dbox-text -->     
-                            <div class="dbox-icon col-md-4 col-6">
-                                <i class='bx bxs-caret-up-circle'></i>
-                            </div><!-- dbox-icon -->   
+                            </div><!-- dbox-text -->      
                             <span class="dbox__title ">Vendas do dia</span>                          
-                        </div><!-- row -->                            
+                        </div>
+                        <div class="dbox-icon">
+                            <i class='bx bxs-caret-up-circle'></i>
+                        </div><!-- dbox-icon -->                             
                     </div>			
                 </div><!-- dbox -->
             </div>
@@ -100,6 +99,12 @@
                 <i class='bx bx-line-chart'></i>
                 <span class="d-sm-inline">Vendas do Dia</span>
             </div><!-- subtitulo -->
+            <?php if(empty($this->dados['vendas'])){
+                echo '<div class="d-flex justify-content-center align-items-center mt-5 mb-5" role="alert">
+                        <i class="bx bx-x pe-1"></i>
+                        Nenhuma Venda Registrada!
+                    </div>';
+            }else{ ?>
             <table class="table table-sm">
                 <thead class=" table-dark">
                     <tr >
@@ -127,6 +132,7 @@
 
                 </tbody>
             </table>
+            <?php } ?>
         </div><!-- conteudo -->
     </div>
 

@@ -22,7 +22,7 @@
             }
         ?>
 
-        <div class="row mt-5 animate__animated animate__fadeInUp">
+        <div class="row mt-5 mb-5 animate__animated animate__fadeInUp">
             <div class="col-md-2 text-center ">
                 <div class="filtro">
                     <div class="btn-group-vertical d-none d-sm-block">

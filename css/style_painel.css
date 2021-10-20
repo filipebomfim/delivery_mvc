@@ -175,6 +175,12 @@ nav{
 
 .dbox-text{
     width: 600px !important ;
+    
+}
+
+.dbox-text span{
+    display: inline-block;
+    font-size: 28px;
 }
 
 
@@ -200,6 +206,10 @@ nav{
     text-align: right;
     margin: 0 !important;
     vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
 }
 
 .dbox-icon i{
@@ -212,6 +222,8 @@ nav{
 hr{
     color: rgb(224, 221, 221) !important;
     margin: 0px !important;
+    display: block;
+    width: 25%;
 }
 
 /*

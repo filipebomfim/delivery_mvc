@@ -46,7 +46,7 @@
             }
         ?>
 
-        <div class="table-responsive">
+        <div class="table-responsive mb-3">
             <table class="table align-middle table-sm mb-5">
                 <thead>
                     <tr>
@@ -90,7 +90,7 @@
         </div>
         
 
-        <div class="mb-3 mt-3 d-flex justify-content-center">
+        <div class="mb-5 d-flex justify-content-center">
             <a href="<?php echo INCLUDE_PATH_SITE?>carrinho/limparCarrinho">
                 <button type="button" class="btn btn-warning me-3">Limpar Carrinho</button>
             </a>

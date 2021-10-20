@@ -1,4 +1,4 @@
-    <footer class="footer mt-auto">
+    <footer class="footer mt-auto fixed-bottom">
         <div class="container">
             <span class="text-muted">Filipe Bomfim Santos Furtado - 2021</span>
         </div>        
