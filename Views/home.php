@@ -10,6 +10,12 @@
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
         <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="<?php echo INCLUDE_PATH;?>css\style_index.css">
+        <meta name="title" content="Delivery MVC">
+        <meta name="description" content="Sistema de estoque alimentado por duas aplicações, onde uma controla o estoque dos produtos e a outra faz a compra.">
+        <meta name="keywords" content="site, painel, estoque, mvc">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="language" content="Portuguese">
+        <meta name="author" content="Filipe Bomfim Santos Furtado">
         <title>Escolha o Sistema</title>
     </head>
 
