@@ -82,4 +82,5 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 Feito com carinho e dedicação por mim, rs. Filipe Bomfim 👋🏽 Entre em contato!
 
-[![Gmail Badge](https://img.shields.io/badge/-filipe.bomfim99@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:filipe.bomfim99@gmail.com)](mailto:filipe.bomfim99@gmail.com)
+[![Gmail Badge](https://img.shields.io/badge/-Filipe-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:filipebomfim.dev@gmail.com)](mailto:filipebomfim.dev@gmail.com)
+[![Linkedin Badge](https://img.shields.io/badge/-Filipe-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/filipe-bomfim-931256224/)](https://www.linkedin.com/in/filipe-bomfim-931256224/)
