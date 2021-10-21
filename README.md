@@ -1,10 +1,10 @@
 <h1 align="center">
     <a href="https://pt-br.reactjs.org/">📦 Sistema de Estoque</a>
 </h1>
-<p align="center">Projeto de um mini sistema web de estoque para itens de uma lanchonete baseado na arquiterura MVC</p>
+<p align="center">Projeto de um mini sistema web de estoque para itens de uma lanchonete baseado na arquiterura MVC. Você pode acessar o preview do sistema clicando em qualquer uma das badges abaixo.</p>
 
- [![Generic badge](https://img.shields.io/badge/VERSÃO-1.0-<COLOR>.svg)](https://shields.io/)
- [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://shields.io/)
+ [![Generic badge](https://img.shields.io/badge/VERSÃO-1.0-<COLOR>.svg)](http://deliveryburguer.epizy.com/)
+ [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://deliveryburguer.epizy.com/)
  
  <h4 align="center"> 
 	🚧  Em construção...  🚧
