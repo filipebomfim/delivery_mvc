@@ -1,6 +1,13 @@
 <?php
 
     class logController extends Controller{
+
+        /*
+        - Função: visualizarLog
+        - Parâmetros: INTEIRO - filtro
+        - Objetivo: Realiza uma filtragem e exibe os registros de log referente ao filtro selecionado.
+        Os registros são exibidos de forma ordenada, baseado no horário de registro mais recente.
+        */
         public function visualizarLog($filtro=0){
             $dados = array();
             $log = new Log();

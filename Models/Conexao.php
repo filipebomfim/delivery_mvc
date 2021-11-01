@@ -3,6 +3,12 @@
         private static $pdo;
         private function __construct(){}
 
+        
+        /*
+        - Função: getConexao
+        - Parâmetros: Sem parâmetros
+        - Objetivo: Função estática que realiza a conexão com o banco de dados.
+        */
         public static function getConexao(){
             if(!isset(self::$pdo)){
                 try {

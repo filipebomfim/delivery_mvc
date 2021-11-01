@@ -66,6 +66,11 @@
             $this->categoria = $dado;
         }
 
+        /*
+        - Função: validarImagem
+        - Parâmetros: Sem parâmetros
+        - Objetivo: Valida se o arquivo enviado é realmente uma imagem (formatos JPEG, JPG ou PNG) e se o tamanho dela é menor que 600KB.
+        */
         public function validarImagem(){
             if(($this->imagem['type'] == 'image/jpeg') ||
               ($this->imagem['type'] == 'image/jpg') ||
@@ -85,6 +90,11 @@
             return false;
         }
 
+        /*
+        - Função: uploadFile
+        - Parâmetros: Sem parâmetros
+        - Objetivo: Armazena o arquivo carregado em uma pasta dentro do projeto.
+        */
         public function uploadFile(){
            
             $formato = explode('.',$this->imagem['name']);
@@ -98,6 +108,11 @@
             }            
         }
 
+        /*
+        - Função: insertItem
+        - Parâmetros: Sem parâmetros
+        - Objetivo: Conecta-se ao banco de dados e armazena as informações do item na tabela tb_item.
+        */
         public function insertItem(){
             try {
                 $sql = $this->conexao->prepare(
@@ -113,6 +128,11 @@
             }                
         }
 
+        /*
+        - Função: updateItem
+        - Parâmetros: Sem parâmetros
+        - Objetivo: Conecta-se ao banco de dados e atualiza as informações de um objeto específico na tabela tb_item.
+        */
         public function updateItem(){
             try {
                 $sql = $this->conexao->prepare(
@@ -133,20 +153,11 @@
             }               
         }
 
-        public function removeItem($item_id){
-            try {
-                $sql = $this->conexao->prepare(
-                    " DELETE FROM tb_item WHERE item_id = ?;"
-                );
-                $sql->execute(array($item_id));
-                return true;
-            } catch (\Throwable $th) {
-                $_SESSION['status'] = 'erro';
-                $_SESSION['status_msg'] = $th;
-                return false;
-            }                
-        }
-
+        /*
+        - Função: getItem
+        - Parâmetros: Sem parâmetros
+        - Objetivo: Conecta-se ao banco de dados e retorna as informações referente a um item específico nas tabelas tb_item e tb_categoria.
+        */
         public function getItem(){
             $dados = array();
             $sql = $this->conexao->prepare(
@@ -168,6 +179,11 @@
             return $dados;
         }
 
+         /*
+        - Função: getItem
+        - Parâmetros: Sem parâmetros
+        - Objetivo: Conecta-se ao banco de dados e retorna as informações sobre todos os itens, contidas nas tabelas tb_item e tb_categoria.
+        */
         public function getItens(){
             $dados = array();
             $sql = $this->conexao->prepare(
@@ -188,6 +204,11 @@
             return $dados;
         }
 
+         /*
+        - Função: getItem
+        - Parâmetros: ARRAY - itens
+        - Objetivo: Conecta-se ao banco de dados e retorna as informações referente a cada um dos itens contidos no carrinho.
+        */
         public function getItensCarrinho($itens){
             $dados = array();
             foreach ($itens as $key => $value) {
@@ -210,6 +231,11 @@
             return $dados;
         }
 
+         /*
+        - Função: filtrarCategoria
+        - Parâmetros: INTEIRO - filtro
+        - Objetivo: Conecta-se ao banco de dados e retorna todos os itens referentes a uma categoria específica informada através do valor do filtro.
+        */
         public function filtrarCategoria($filtro){
             $dados = array();
             $sql = $this->conexao->prepare(
@@ -230,6 +256,11 @@
             return $dados;
         }
 
+         /*
+        - Função: contarItens
+        - Parâmetros: Sem parâmetros
+        - Objetivo: Conecta-se ao banco de dados e retorna a contagem de todos os itens cadastrados na tabela tb_item.
+        */
         public function contarItens(){
             $sql = $this->conexao->prepare(
                 "SELECT * FROM `tb_item`"
@@ -238,7 +269,11 @@
             return $sql->fetchall(PDO::FETCH_ASSOC);
         }
 
-
+         /*
+        - Função: removerEstoque
+        - Parâmetros: INTEIRO - quantidade
+        - Objetivo: Conecta-se ao banco de dados e remove um valor específico do estoque de um item específico armazenado no banco.
+        */
         public function removerEstoque($quantidade){
                 $sql = $this->conexao->prepare(
                     "UPDATE tb_item

@@ -35,7 +35,11 @@
         }
 
         
-
+        /*
+        - Função: addPedido
+        - Parâmetros: Sem parâmetros
+        - Objetivo: Conecta-se ao banco de dados e armazena as informações acerca de um pedido.
+        */
         public function addPedido(){
             try {
                 $sql = $this->conexao->prepare(
@@ -59,6 +63,11 @@
             }
         }
 
+        /*
+        - Função: getPedidos
+        - Parâmetros: Sem parâmetros
+        - Objetivo: Conecta-se ao banco de dados e retorna todos os pedidos armazenados.
+        */
         public function getPedidos(){
                 $dados = array();
                 $sql = $this->conexao->prepare(
@@ -75,6 +84,11 @@
                 return $dados;
         }
 
+        /*
+        - Função: calcLucroTotal
+        - Parâmetros: ARRAY - pedidos
+        - Objetivo: Calcula o lucro obtido a partir da relação entre quantidade x preço, baseado em um array de pedidos informado como parâmetro.
+        */
         public function calcLucroTotal($pedidos){
             $lucro = 0;
             foreach ($pedidos as $key => $value) {
@@ -83,6 +97,11 @@
             return $lucro;
         }
 
+        /*
+        - Função: getPedidosDia
+        - Parâmetros: DATE - data
+        - Objetivo: Conecta-se ao banco de dados e retorna as informação acerca de todos os pedidos realizados em uma determinada data.
+        */
         public function getPedidosDia($data){
             $dados = array();
             $sql = $this->conexao->prepare(
@@ -101,6 +120,11 @@
             return $dados;
         }
 
+        /*
+        - Função: getVendasDia
+        - Parâmetros: DATE - data
+        - Objetivo: Conecta-se ao banco de dados e retorna as informações de pedidos unitários em um determinado dia.
+        */
         public function getVendasDia($data){
             $dados = array();
             $sql = $this->conexao->prepare(

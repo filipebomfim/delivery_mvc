@@ -4,6 +4,11 @@
             $this->visualizarItens();
         }
 
+        /*
+        - Função: visualizarItens
+        - Parâmetros: INTEIRO - filtro
+        - Objetivo: Realiza uma filtragem e exibe os itens referente ao filtro selecionado na parte de visualizar Itens do painel de controle. Os itens são exibidos de forma ordenada, por ordem de estoque e depois pelo alfabeto de A-Z.
+        */
         public function visualizarItens($filtro = 0){
             $dados = array();
             $categorias = new Categoria();
@@ -32,12 +37,22 @@
             $this->carregarTemplate('painel/visualizarItens',$dados,'painel/templates/header','painel/templates/footer');
         }
 
+        /*
+        - Função: cadastrarItem
+        - Parâmetros: Sem parâmetros
+        - Objetivo: Chama o template para cadastrar novos itens no painel de controle. As categorias cadastradas também são resgatadas para serem selecionadas.
+        */
         public function cadastrarItem(){
             $categorias = new Categoria();
             $dados = $categorias->getCategorias();
             $this->carregarTemplate('painel/cadastrarItem',$dados,'painel/templates/header','painel/templates/footer');
         }
 
+        /*
+        - Função: editarItem
+        - Parâmetros: INTEIRO - item_id
+        - Objetivo: Chama o template para editar um item a partir do seu id no painel de controle. 
+        */
         public function editarItem($item_id){
             $item = new Item();
             $item->setId($item_id);
@@ -45,6 +60,11 @@
             $this->carregarTemplate('painel/editarItem',$dados,'painel/templates/header','painel/templates/footer');
         }
 
+        /*
+        - Função: validarFormulário
+        - Parâmetros: Sem parâmetros
+        - Objetivo: Realiza a validação dos dados do formulário de cadastrar item, a partir das informações dados pelo método POST.
+        */
         public function validarFormulario(){
             if($_POST['nome'] == ''){
                 $_SESSION['status'] = 'erro';
@@ -75,34 +95,11 @@
             }
         }
 
-        public function remove(){
-            if(isset($_POST['remove'])){
-                $item = new Item();
-                $cat = new Categoria();
-                $item->setNome($_POST['nome']);
-                $item->setEstoque($_POST['estoque']);
-                $item->setPreco($_POST['preco']);
-                $item->setCategoria($_POST['categoria']);
-                if($item->removeItem($_POST['remove'])){
-                    $_SESSION['status'] = 'sucesso';
-                    $_SESSION['status_msg'] = 'Item removido com sucesso!';
-                    $registro = array();
-                    $registro['tipo'] = EXCLUSÃO;
-                    $registro['descricao'] = 'Nome: '.$item->getNome().',Estoque: '.$item->getEstoque().',Preço: '.$item->getPreco().',Categoria: '.$cat->getCategoriaNome($item->getCategoria())['cat_nome'].'
-                    ';
-                    $log = new Log();
-                    $log->setRegistro($registro);
-                }
-
-                header('Location: '.INCLUDE_PATH_PAINEL.'item/visualizarItens');
-                exit;
-            }else{
-                header('Location: '.INCLUDE_PATH_PAINEL.'painel');
-                exit;
-            }
-         
-        }
-
+        /*
+        - Função: checkInsert
+        - Parâmetros: Sem parâmetros
+        - Objetivo: Salva um novo item criado a partir das informações do método POST no banco de dados e cria um registro sobre as informações cadastradas, o qual também é armazenado no banco.
+        */
         public function checkInsert(){
                 if($this->validarFormulario()){
                     $item = new Item();
@@ -123,24 +120,27 @@
                         if($item->insertItem()){
                             $_SESSION['status'] = 'sucesso';
                             $_SESSION['status_msg'] = 'Item cadastrado com sucesso!';
-                            $registro = array();
-                            $registro['tipo'] = CADASTRO;
-                            $registro['descricao'] = 'Nome: '.$item->getNome().',Estoque: '.$item->getEstoque().',Preço: '.$item->getPreco().',Categoria: '.$cat->getCategoriaNome($item->getCategoria())['cat_nome'].'
-                            ';
-                            $log = new Log();
-                            $log->setRegistro($registro);
+                            $registro = new Log();
+                            $registro->setTipo(CADASTRO);
+                            $registro->setDescricao('Nome: '.$item->getNome().',Estoque: '.$item->getEstoque().',Preço: '.$item->getPreco().',Categoria: '.$cat->getCategoriaNome($item->getCategoria())['cat_nome']);
+                            $registro->setData(date('Y-m-d H:i:s'));
+                            $registro->setRegistro();
                         }
                     }
                     header('Location: '.INCLUDE_PATH_PAINEL.'item/visualizarItens');
                     exit;
                 }else{
-                    header('Location: '.INCLUDE_PATH_PAINEL.'painel');
+                    header('Location: '.INCLUDE_PATH_PAINEL.'item/cadastrarItem');
                     exit;
                 }
 
         }
 
-
+        /*
+        - Função: checkUpdate
+        - Parâmetros: Sem parâmetros
+        - Objetivo: Edita um item existente a partir das informações do método POST no banco de dados e cria um registro sobre as informações alteradas, o qual também é armazenado no banco. O nome e a categoria do item não são atualizadas.
+        */
         public function checkUpdate(){
                 $item = new Item();
                 $cat = new Categoria();
@@ -155,12 +155,11 @@
                     if($item->updateItem()){
                         $_SESSION['status'] = 'sucesso';
                         $_SESSION['status_msg'] = 'Item atualizado com sucesso!';
-                        $registro = array();
-                        $registro['tipo'] = ALTERAÇÃO;
-                        $registro['descricao'] = 'Nome: '.$item->getNome().',Estoque: '.$item->getEstoque().',Preço: '.$item->getPreco().',Categoria: '.$cat->getCategoriaNome($item->getCategoria())['cat_nome'].'
-                        ';
-                        $log = new Log();
-                        $log->setRegistro($registro);
+                        $registro = new Log;
+                        $registro->setTipo(ALTERAÇÃO);
+                        $registro->setDescricao('Nome: '.$item->getNome().',Estoque: '.$item->getEstoque().',Preço: '.$item->getPreco().',Categoria: '.$cat->getCategoriaNome($item->getCategoria())['cat_nome']);
+                        $registro->setData(date('Y-m-d H:i:s'));
+                        $registro->setRegistro();
                     } 
                 }else{
                     $item->setImagem($_FILES['imagem']);
@@ -169,12 +168,12 @@
                         if($item->updateItem()){
                             $_SESSION['status'] = 'sucesso';
                             $_SESSION['status_msg'] = 'Item atualizado com sucesso!';
-                            $registro = array();
-                            $registro['tipo'] = ALTERAÇÃO;
-                            $registro['descricao'] = 'Nome: '.$item->getNome().',Estoque: '.$item->getEstoque().',Preço: '.$item->getPreco().',Categoria: '.$cat->getCategoriaNome($item->getCategoria())['cat_nome'].',IMAGEM ALTERADA
-                            ';
-                            $log = new Log();
-                            $log->setRegistro($registro);
+                            $registro = new Log();
+                            $registro->setTipo(ALTERAÇÃO);
+                            $registro->setDescricao('Nome: '.$item->getNome().',Estoque: '.$item->getEstoque().',Preço: '.$item->getPreco().',Categoria: '.$cat->getCategoriaNome($item->getCategoria())['cat_nome'].',IMAGEM ALTERADA
+                            ');
+                            $registro->setData(date('Y-m-d H:i:s'));
+                            $registro->setRegistro($registro);
                         }                      
                     }
                 }

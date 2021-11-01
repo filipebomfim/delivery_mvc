@@ -2,6 +2,11 @@
 
     class painelController extends Controller{
 
+        /*
+        - Função: index
+        - Parâmetros: Sem parâmetros
+        - Objetivo: Chama o template para visualizar o home do painel de controle. Informações de data, itens cadastrados, registros e pedidos também são resgatados para serem exibidos nos cards do painel.
+        */
         public function index(){
             $dataHoje = date('Y-m-d');
             $dados = array();

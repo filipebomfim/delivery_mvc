@@ -1,12 +1,16 @@
 <?php 
     class Core {
-        private $user;
-        private $perfil;
 
         public function __construct(){
             $this->run();
         }
 
+        
+        /*
+        - Função: run
+        - Parâmetros: Sem parâmetros
+        - Objetivo: Função que faz o tratamento da url do projeto. A partir da quebra da String proveniente da url, são encontrados o controlador, o método e os parâmetros a serem utilizados.
+        */
         public function run(){
             $parametros = array();
             if(isset($_GET['url'])) {

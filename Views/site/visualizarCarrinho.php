@@ -56,7 +56,6 @@
                         <th scope="col">Categoria</th>
                         <th scope="col">Quantidade</th>
                         <th scope="col">Preço Unitário</th>
-                        <th scope="col">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,11 +67,6 @@
                         <td><?php echo $value['cat_nome'] ?></td>
                         <td><?php echo $value['item_quantidade'] ?></td>
                         <td>R$ <?php echo number_format($value['item_preco'],2,',','.')?></td>
-                        <td>
-                            <a class="nav-link active" aria-current="page" href="#">
-                                <i class='modal-button bx bxs-trash bx-tada-hover'  data-bs-toggle="modal" data-bs-target="#modalDelete<?php echo $value['item_id'] ?>"></i>
-                            </a>
-                        </td>
                     </tr>
                     <?php } ?>
                 </tbody>

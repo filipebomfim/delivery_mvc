@@ -6,6 +6,12 @@ class cardapioController extends Controller
         $this->filtrarCardapio();
     }
 
+    /*
+        - Função: filtrarCardapio
+        - Parâmetros: INTEIRO - filtro
+        - Objetivo: Realiza uma filtragem e exibe os itens do cardápio referente ao filtro selecionado.
+        Os itens são exibidos de forma ordenada, por ordem de estoque e depois pelo alfabeto de A-Z.
+    */
     public function filtrarCardapio($filtro = 0)
     {
         $dados = array();
@@ -19,7 +25,7 @@ class cardapioController extends Controller
             $dados['titulo'] = 'Cardápio - Todos os Itens';
         } else {
             $dados['itens'] = $item->filtrarCategoria($filtro);
-            $dados['titulo'] = 'Cardápio - ' .$categorias->getCategoriaNome($filtro)['cat_nome'];
+            $dados['titulo'] = 'Cardápio - ' . $categorias->getCategoriaNome($filtro)['cat_nome'];
         }
         if (!empty($dados['itens'])) {
 
