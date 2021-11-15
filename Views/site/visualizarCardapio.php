@@ -79,6 +79,7 @@
 
                 <?php if($value['item_estoque']>0){ ?>
 
+                
                 <div class="col-6 col-md-6 col-lg-6 col-xl-4" >
                     <div class="item card shadow-sm animate__animated animate__fadeInUp" style="animation-delay: <?php echo $animation?>s;"> 
                         <div  style="background-image: url(<?php echo INCLUDE_PATH?>img/<?php echo $value['item_imagem'] ?>);" class="card-img"></div>
@@ -86,9 +87,7 @@
                         <div class="card-price ps-2 pe-2">R$ <?php echo number_format($value['item_preco'],2,',','.')?></div>
 
                         <div class="card-body d-flex flex-column ">
-                            <p class="card-title d-flex justify-content-center mb-3"><?php echo $value['item_nome'] ?></p>
-
-                            <p class="card-description mb-3"><?php echo $value['item_descricao'] ?></p>
+                            <p class="card-title d-flex justify-content-center mb-3"><?php echo $value['item_nome'] ?></p>         
                             
                         </div>
                         <div class=" mb-3 ms-2 me-2 d-flex justify-content-center align-items-center">

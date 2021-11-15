@@ -13,16 +13,25 @@
             $this->carregarTemplate('site/visualizarCarrinho',$dados,'site/templates/header','site/templates/footer');
         }
 
+        public function addToCart($item_id){
+            $item = new Item();
+            $item->setId($item_id);
+            $dados['item'] = $item->getItem();
+            $dados['titulo'] = 'Adicionar ao Carrinho';
+            $this->carregarTemplate('site/adicionarItemCarrinho',$dados,'site/templates/header','site/templates/footer');
+        }
+
         /*
         - Função: addToCart
         - Parâmetros: INTEIRO - item_id
         - Objetivo: Busca o item a partir do id passado por parâmetro, e caso ele possua estoque no momento da adição é adicionado no carrinho de compras (Super Global $_SESSION['carrinho]).
         */
-        public function addToCart($item_id){
+        public function addItem($item_id){
             $item = new Item();
             $item->setId($item_id);
             $dados = $item->getItem();
-            if($dados['item_estoque']){
+            $dados['item_quantidade'] = $_POST['quantidade'];
+            if($dados['item_estoque'] && ($dados['item_estoque'] >= $dados['item_quantidade'])){
                 $carrinho = new Carrinho();
                 $carrinho->setItens($dados);
                 $carrinho->addToCart();              
@@ -30,7 +39,7 @@
                 $_SESSION['status_msg'] = 'Item adicionado ao carrinho';
             }else{
                 $_SESSION['status'] = 'erro';
-                $_SESSION['status_msg'] = 'Item não foi adicionado ao carrinho pois não possui estoque';
+                $_SESSION['status_msg'] = 'Item não foi adicionado ao carrinho pois não possui estoque suficiente';
             }
             header('Location: '.INCLUDE_PATH_SITE.'cardapio');
             exit;

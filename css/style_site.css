@@ -138,6 +138,10 @@ nav .loggout:hover i{
     position: absolute;
     left: 50%;
     transform:translateX(-50%);
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #ffffff10;  
+    backdrop-filter: blur(12px);
 }
 
 .chamada-content h1{
@@ -224,33 +228,32 @@ section{
     border-bottom-right-radius: 5px;
 }
 
-.item{
+.item, .card-view{
     margin-bottom: 20px !important;
-    height: 400px !important;
     box-shadow: 0 0 1em 0 #b7b9b9 !important;
 }
 
-.item .card-img {
+.card-img {
     min-height: 150px !important;
-    height: 150px !important;
+    height: 200px !important;
     width: 100% ;
     background-position: center;
 	background-size: cover;
     background-repeat: no-repeat;
 }
 
-.item .card-title{
+.card-title{
     font-size: 20px;
     color: black;
     font-weight: 800;
 }
 
-.item .card-description{
+.card-description{
     font-size: 16px;
     font-weight: 300;
 }
 
-.item .card-price{
+.card-price{
     font-size: 18px;
     background-color: green;
     color: white;
@@ -262,11 +265,11 @@ section{
     display: block !important;
 }
 
-.item .sem-estoque{
+.sem-estoque{
     background-color: red;
 }
 
-.item .cart-mobile{
+.cart-mobile{
     display: block;
     position: absolute !important;
     right: 10px !important;
@@ -275,7 +278,7 @@ section{
     
 }
 
-.item .cart-mobile i{
+.cart-mobile i{
     background-color: #BF5B04;
     color: white;
     border: 1px solid #BF5B04;
@@ -284,17 +287,20 @@ section{
 }
 
 
-.item .cart-mobile{
+.cart-mobile{
     display: none;
 }
 
 
-.item button{
+.item button,
+.card-view button{
     border: 1px solid #BF5B04;
     color: #BF5B04;
+    margin-bottom: 10px;
 }
 
-.item button:hover{
+.item button:hover,
+.card-view button:hover{
     background-color: #BF5B04;
     color: white;
 }

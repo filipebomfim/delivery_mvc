@@ -25,13 +25,12 @@
         */
         public function addToCart(){
             if(!isset($_SESSION['carrinho'])) $_SESSION['carrinho'] = array();
-            $this->itens['item_quantidade'] = 1;
             if(count($_SESSION['carrinho'])==0) array_unshift($_SESSION['carrinho'],$this->itens);
             else{
                 $retorno = false;
                     foreach ($_SESSION['carrinho'] as $key => $value) {
                         if($this->itens['item_id'] == $value['item_id']){
-                            $_SESSION['carrinho'][$key]['item_quantidade'] = $_SESSION['carrinho'][$key]['item_quantidade'] + 1;
+                            $_SESSION['carrinho'][$key]['item_quantidade'] = $_SESSION['carrinho'][$key]['item_quantidade'] + $this->itens['item_quantidade'];
                             $retorno = true;
                             break;
                         }
