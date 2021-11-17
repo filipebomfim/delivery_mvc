@@ -1,7 +1,7 @@
 <h1 align="center">
     📦 Sistema de Estoque</a>
 </h1>
-<p align="center">Projeto de um mini sistema web de estoque para itens de uma lanchonete baseado na arquiterura MVC. Você pode acessar o preview do sistema clicando em qualquer uma das badges abaixo.</p>
+<p align="center">Projeto de um mini sistema web de estoque para itens de uma lanchonete baseado na arquiterura MVC. Você pode acessar o preview do sistema clicando em qualquer uma das badges abaixo. Todo o projeto foi criado e executado no Windows 10</p>
 
  [![Generic badge](https://img.shields.io/badge/VERSÃO-1.0-<COLOR>.svg)](http://deliveryburguer.epizy.com/)
  [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://deliveryburguer.epizy.com/)
