@@ -5,10 +5,7 @@
 
  [![Generic badge](https://img.shields.io/badge/VERSÃO-1.0-<COLOR>.svg)](http://deliveryburguer.epizy.com/)
  [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://deliveryburguer.epizy.com/)
- 
- <h4 align="center"> 
-	🚧  Em construção...  🚧
-</h4>
+
 
 <p align="center">
  <a href="#features">Funcionalidades</a> •
