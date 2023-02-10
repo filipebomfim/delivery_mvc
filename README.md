@@ -52,7 +52,7 @@
 
 <h3 id="requisitos">🎲 Pré-requisitos</h3>
 
-Antes de começar, você vai precisar ter instalado em sua máquina o [Git](https://git-scm.com) e o [xampp](https://www.apachefriends.org/pt_br/index.html). 
+Antes de começar, você vai precisar ter instalado em sua máquina o [Git](https://git-scm.com) e o [xampp](https://www.apachefriends.org/pt_br/index.html), rodando o PHP na versão 7.4.12. 
 Além disto é bom ter um editor para trabalhar com o código como o [VSCode](https://code.visualstudio.com/)
 
 ### 🎲 Rodando o Back End (servidor) e o Banco de Dados
