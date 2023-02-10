@@ -5,6 +5,15 @@
 
  [![Generic badge](https://img.shields.io/badge/VERSÃO-1.0-<COLOR>.svg)](http://deliveryburguer.epizy.com/)
  [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://deliveryburguer.epizy.com/)
+ 
+ ![painel](https://user-images.githubusercontent.com/38573324/218107668-e405a6f3-4fe9-435f-b5c2-543b6263cfb6.png)
+ ![cardapio](https://user-images.githubusercontent.com/38573324/218107168-71f156b8-2689-4279-9ba3-8b1e4f68d517.png)
+ ![addCarrinho](https://user-images.githubusercontent.com/38573324/218107263-b4096e9f-b0de-43b2-ab29-26cd62628a26.png)
+ ![carrinho](https://user-images.githubusercontent.com/38573324/218107369-079309e9-d2eb-47ed-a31d-148e2ddda151.png)
+ ![dashboard](https://user-images.githubusercontent.com/38573324/218107471-8d5fc2af-6edb-4679-8370-d2bc26fee31b.png)
+
+
+
 
 
 <p align="center">
